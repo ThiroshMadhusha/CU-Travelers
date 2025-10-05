@@ -1,0 +1,152 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(228, 66%, 53%);
+  --first-color-alt: hsl(228, 66%, 47%);
+  --first-color-light: hsl(228, 62%, 59%);
+  --first-color-lighten: hsl(228, 100%, 97%);
+  --second-color: hsl(25, 83%, 53%);
+  --title-color: hsl(228, 57%, 28%);
+  --text-color: hsl(228, 15%, 50%);
+  --text-color-light: hsl(228, 60%, 95%);
+  --border-color: hsl(0, 11%, 88%);
+  --body-color: #fff;
+  --container-color: #fff;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+
+}
+.title h1{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 42px;
+    color: #fff;
+}
+.title h1::after{
+    content: "";
+    height: 4px;
+    width: 230px;
+    background-color: #000;
+    display: block;
+    margin: auto;
+}
+.services{
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+}
+.card{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px 20px;
+    padding: 20px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.card .icon{
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+.card .icons img {
+    width: 100px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+    margin-bottom: 10px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensures the image scales well within the size */
+}
+.card h2{
+    font-size: 28px;
+    color: #c94f4f;
+    margin-bottom: 20px;
+}
+.card p{
+    font-size: 17px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #ffffff;
+}
+
+.card:hover{
+    background-color: #ffffff1a;
+    transition: 0.4s ease;
+}
+
+.viewbtn{
+    font-size: 15px;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background-color: #2c677c;
+}
+.viewbtn:hover{
+    background-color: #c94f4f;
+    transition: 0.4s ease;
+}
+
+/* For mobile view (1 card per row) */
+@media screen and (max-width: 560px) {
+    .services {
+        flex-direction: column;
+        display: flex;
+    }
+    .card {
+        width: 85%;
+        margin: 20px 0;
+        display: flex;
+    }
+    .services{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        text-align: center;
+    }
+}
+
+/* For tablet view (2 cards per row) */
+@media screen and (min-width: 561px) and (max-width: 992px) {
+    .services {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        width: 45%; /* Adjust to fit two cards per row */
+        margin: 20px 10px;
+    }
+}
+
+
+
+
+
+
