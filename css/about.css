@@ -1,0 +1,240 @@
+ 
+ /* About Page */
+
+  .header::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 15rem);
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0),
+        var(--primary-color)
+      ),
+      url("/assets/about/tour1.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  
+.scroll{
+  text-align: center;
+  color: aqua;
+}
+
+.header__containers h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 4.5rem;
+  color: var(--white);
+  
+}
+
+
+.section__subheader {
+    position: relative;
+    isolation: isolate;
+    margin-bottom: 1rem;
+    padding-left: 5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--secondary-color);
+  }
+  
+  .section__subheader::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 4rem;
+    background-color: var(--secondary-color);
+  }
+  
+  .section__subheader::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-10%, -50%);
+    font-size: 8rem;
+    font-weight: 600;
+    color: var(--white);
+    opacity: 0.1;
+    z-index: -1;
+  }
+
+  
+.header__container {
+  position: relative;
+  isolation: isolate;
+  height: calc(100% - 75px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__content {
+  max-width: 700px;
+}
+
+.header__content .section__header {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 5rem;
+}
+
+.header__content a {
+  color: var(--white);
+}
+
+.header__content a:hover {
+  color: var(--secondary-color);
+}
+
+.header__socials {
+  position: absolute;
+  left: 0;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white);
+  transform: translateX(calc(-50% + 1rem)) rotate(90deg);
+  display: none;
+}
+
+.header__socials a {
+  font-size: 1.2rem;
+  color: var(--white);
+  transform: rotate(-90deg);
+}
+
+.header__socials a:hover {
+  color: var(--secondary-color);
+}
+
+.about {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    var(--primary-color) 8rem
+  );
+  overflow: hidden;
+}
+
+.about__container {
+  padding-top: 10%;
+  display: grid;
+  gap: 5rem 2rem;
+  overflow: hidden;
+}
+
+.about__image img {
+  max-width: 400px;
+  margin-inline: auto;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+}
+
+.about__content-1 .section__subheader::after {
+  content: "01";
+}
+
+.about__content-2 .section__subheader::after {
+  content: "02";
+}
+
+.about__content-3 .section__subheader::after {
+  content: "03";
+}
+
+
+.about__content p {
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.about__content a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary-color);
+}
+
+.about__content a span {
+  transition: 0.3s;
+}
+
+.about__content a:hover span {
+  transform: translateX(10px);
+}
+
+/* Mobile styles for screens 390px and smaller */
+@media (max-width: 390px) {
+  .section__header {
+    margin-top: 4rem;
+  }
+
+}
+
+/* Mobile styles for screens 420px and smaller */
+@media (max-width: 420px) {
+  .section__header {
+    margin-top: 4rem;
+  }
+
+}
+
+/* Styles for screens 540px and smaller */
+@media (max-width: 540px) {
+  .section__header {
+    margin-top: 4rem;
+  }
+  .about__container {
+    padding-top: 40%;
+    display: grid;
+    gap: 5rem 2rem;
+    overflow: hidden;
+  }
+}
+
+/* Styles for screens larger than 540px */
+@media (min-width: 541px) {
+  .section__header {
+    margin-top: 4rem;
+  }
+
+}
+
+@media (width > 768px) {
+
+  .header__container {
+    height: calc(100% - 10rem);
+  }
+
+  .header__socials {
+    display: flex;
+  }
+
+  .about__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 10rem 2rem;
+  }
+
+  .about__image-1 {
+    grid-area: 1/2/2/3;
+  }
+
+  .about__image-3 {
+    grid-area: 3/2/4/3;
+  }
+
+  .about__content {
+    margin-left: 6rem;
+  }
+
+}
