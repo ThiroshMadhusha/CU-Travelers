@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
+      
+    <!--=============== CSS ===============--> 
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/hero.css" />
+   
+    <!--=============== Icons ===============--> 
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <title>TangoToursSL - About Sri Lanka</title>
+  </head>
+  <body>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <header class="header" id="home"></header>
+
+    <div class="section__container header__containers">
+      <div class="header__content">
+        <h1 class="section__header">
+          "Discover the Wonders of Sri Lanka with Us!"
+        </h1>
+        <br>
+        <div class="scroll__btn">
+          <a href="#about">
+            <h3 class="section__subheader">YOUR JOURNEY BEGINS HERE</h3>
+            <br> 
+            <h4 class="scroll">
+              <span>Scroll Down<i class="ri-arrow-down-line"></i></span>
+            </h4> 
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="about">
+      <div class="section__container about__container">
+        <div class="about__image about__image-1" id="about">
+          <img src="../assets/about/about.jpg" alt="about" height="450" />
+        </div>
+        <div class="about__content about__content-1">
+          <h3 class="section__subheader">Tropical Coastline</h3>
+          <h2 class="section__header">Experience the Breathtaking Beaches of Sri Lanka</h2>
+          <p>
+            Sri Lanka’s coastline is a ribbon of beauty that stretches from golden sands to hidden bays. 
+            From the calm waters of Mirissa to the vibrant surf in Arugam Bay, 
+            each beach has its own charm. Relax under the coconut palms, 
+            enjoy fresh seafood by the ocean, or take a sunset walk as the sky turns gold. 
+            Whether for relaxation or adventure, Sri Lanka’s beaches are pure paradise for every traveler.
+          </p>
+          <div class="about__btn">
+            <a href="/pages/travel">
+              View more
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+        </div>
+        <div class="about__image about__image-2" id="equipment">
+          <img src="../assets/services/jip1.png" alt="about"  height="450" />
+        </div>
+        <div class="about__content about__content-2">
+          <h3 class="section__subheader">Wildlife Adventures</h3>
+          <h2 class="section__header">Discover the Majesty of Yala and Udawalawa Safaris</h2>
+          <p>
+            Venture deep into Sri Lanka’s wild side where elephants roam free and leopards rule the jungle. 
+            Yala and Udawalawa National Parks offer thrilling safari experiences 
+            where you can spot exotic animals in their natural habitats. 
+            Listen to the calls of tropical birds, capture moments of untamed beauty, 
+            and feel the pulse of nature in its purest form. 
+            Every safari here is a journey into the heart of Sri Lanka’s wilderness.
+          </p>
+          <div class="about__btn">
+            <a href="/pages/travel">
+              View more
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+        </div>
+        <div class="about__image about__image-3" id="blog">
+          <img src="../assets/temple/old1.jpg" alt="about" height="450" />
+        </div>
+        <div class="about__content about__content-3">
+          <h3 class="section__subheader">Ancient Heritage</h3>
+          <h2 class="section__header">Explore Sri Lanka’s Ancient Towns and Historical Wonders</h2>
+          <p>
+            Journey through Sri Lanka’s ancient towns and heritage sites 
+            where centuries of culture and architecture come alive. 
+            From sacred temples to royal palaces and stone carvings, 
+            every site reveals stories of kings, faith, and creativity. 
+            These timeless places capture the spirit of a nation rich in tradition 
+            and history, offering travelers a deep connection to Sri Lanka’s proud past.
+          </p>
+          <div class="about__btn">
+            <a href="/pages/travel">
+              View more
+              <span><i class="ri-arrow-right-line"></i></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      // Function to load navbar and footer
+      function loadComponent(id, file) {
+        fetch(file)
+          .then(response => {
+            if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById(id).innerHTML = data;
+            if (id === 'navbar-placeholder') {
+              const menuBtn = document.getElementById("menu-btn");
+              const navLinks = document.getElementById("nav-links");
+              const menuBtnIcon = menuBtn.querySelector("i");
+              menuBtn.addEventListener("click", () => {
+                navLinks.classList.toggle("open");
+                const isOpen = navLinks.classList.contains("open");
+                menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+              });
+              navLinks.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+                menuBtnIcon.setAttribute("class", "ri-menu-line");
+              });
+            }
+          })
+          .catch(error => console.error('Error loading component:', error));
+      }
+
+      // Load navbar and footer
+      loadComponent('navbar-placeholder', '/components/navbar.html');
+      loadComponent('footer-placeholder', '/components/footer.html');
+    </script>
+  </body>
+</html>
