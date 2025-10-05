@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/hero.css" />
+    <link rel="stylesheet" href="/css/experience.css" />
+    <link rel="stylesheet" href="/css/what-we-offer.css" />
+    <link rel="stylesheet" href="/css/featured.css" />
+    <link rel="stylesheet" href="/css/testimonials.css" />
+    <link rel="stylesheet" href="/css/vehicles.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>TangoToursSL</title>
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+    <div id="hero-placeholder"></div>
+    <div id="what-we-offer-placeholder"></div>
+    <div id="experience-placeholder"></div>
+    <div id="featured-placeholder"></div>
+    <!-- <div id="testimonials-placeholder"></div> -->
+    <div id="vehicles-placeholder"></div>
+
+    <section class="section__container banner__container">
+      <h2>
+        TangoToursSL is the ultimate platform for discovering and exploring the best travel destinations. We aim to connect travelers with popular and nearby tourist spots.
+      </h2>
+    </section>
+   <section class="section__container music__container">
+      <div class="music__content">
+        <h2 class="section__header">
+          Travel with US around <br> <span>Sri Lanka</span> Today!
+        </h2>
+        <p class="section__description">
+          Experience the magic of Sri Lanka where ancient traditions meet natural wonders in perfect harmony.
+          <br>
+          Reach out on WhatsApp or Call US to Start Your Adventure...!
+        </p>
+        <div class="music__btns">
+          <a href="https://api.whatsapp.com/send?phone=94711360684&text=" target="_blank">
+            <button class="buttons">
+              <span><i class="ri-whatsapp-line"></i></span>
+              WhatsApp
+            </button>
+          </a>
+          <a href="tel:0773467723">
+            <button class="buttons">
+              <span><i class="ri-phone-line"></i></span>
+              Call US
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div id="footer-placeholder"></div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/testimonials.js"></script>
+    <script src="/js/vehicles.js"></script>
+    <script>
+      function loadComponent(id, file) {
+        fetch(file)
+          .then(response => {
+            if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById(id).innerHTML = data;
+
+            if (id === 'navbar-placeholder') {
+              const menuBtn = document.getElementById("menu-btn");
+              const navLinks = document.getElementById("nav-links");
+              const menuBtnIcon = menuBtn.querySelector("i");
+
+              menuBtn.addEventListener("click", () => {
+                navLinks.classList.toggle("open");
+                const isOpen = navLinks.classList.contains("open");
+                menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+              });
+
+              navLinks.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+                menuBtnIcon.setAttribute("class", "ri-menu-line");
+              });
+            }
+            if (id === 'hero-placeholder') {
+              const videos = document.querySelectorAll('.media-video');
+              videos.forEach(video => {
+                video.onloadeddata = function() {
+                  video.playbackRate = 0.6;
+                  video.addEventListener('timeupdate', function() {
+                    const duration = this.duration;
+                    if (duration && this.currentTime >= duration - 4) {
+                      this.currentTime = duration - 2;
+                      this.play();
+                    }
+                  });
+                };
+              });
+            }
+            
+            if (id === 'vehicles-placeholder') {
+              if (typeof initVehiclesSlider === 'function') {
+                initVehiclesSlider();
+              }
+            }
+          })
+          .catch(error => console.error('Error loading component:', error));
+      }
+
+      loadComponent('hero-placeholder', '/components/hero.html');
+      loadComponent('navbar-placeholder', '/components/navbar.html');
+      loadComponent('experience-placeholder', '/components/experience.html');
+      loadComponent('what-we-offer-placeholder', '/components/what-we-offer.html');
+      loadComponent('footer-placeholder', '/components/footer.html');
+      loadComponent('featured-placeholder', '/components/featured.html');
+      loadComponent('testimonials-placeholder', '/components/testimonials.html');
+      loadComponent('vehicles-placeholder', '/components/vehicles.html');
+    </script>
+  </body>
+</html>
