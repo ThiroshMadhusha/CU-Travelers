@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/contact.css" />
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <title>TangoToursSL - Contact Us</title>
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <header class="contact-header">
+      <div class="section__container contact-grid">
+        <div class="contact-content">
+          <div class="contact-btn">
+            <span><i class="ri-headphone-line"></i></span>
+            Contact Us
+          </div>
+
+          <div class="contact-image">
+            <div class="overlay-circle">
+              <img src="../assets/hero/tour.jpg" alt="Wildlife Circle" class="circle-image active">
+            </div>
+          </div>
+
+          <h1>Get in Touch with US!</h1>
+          <h2>We’re Here to Help</h2>
+          <p>Reach out for inquiries, bookings, or assistance with your travel plans around Sri Lanka.</p>
+          <br>
+
+          <div class="contact__cards">
+            <div class="contact__card-box">
+              <div class="contact__card-info">
+                <i class='bx bx-phone-call'></i>
+                <div>
+                  <h3 class="contact__card-title">Call</h3>
+                  <p class="contact__card-description">+94 77 346 7723</p>
+                </div>
+              </div>
+              <a href="tel:+94773467723" target="_blank">
+                <button class="button contact__card-button">Call Now</button>
+              </a>
+            </div>
+            <div class="contact__card-box">
+              <div class="contact__card-info">
+                <i class='bx bxl-whatsapp'></i>
+                <div>
+                  <h3 class="contact__card-title">WhatsApp</h3>
+                  <p class="contact__card-description">+94 71 136 0684</p>
+                </div>
+              </div>
+              <a href="https://api.whatsapp.com/send?phone=94711360684" target="_blank">
+                <button class="button contact__card-button">Message Now</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact__emailcard">
+            <div class="contact__card-box">
+              <div class="contact__card-info">
+                <i class='bx bxl-gmail'></i>
+                <div>
+                  <h3 class="contact__card-title">E-Mail</h3>
+                  <p class="contact__card-description">whitevilla0520@gmail.com</p>
+                </div>
+              </div>
+              <a href="mailto:whitevilla0520@gmail.com" target="_blank">
+                <button class="button contact__card-button">Send Mail</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+
+function loadComponent(id, file) {
+        fetch(file)
+          .then(response => {
+            if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+            return response.text();
+          })
+          .then(data => {
+            document.getElementById(id).innerHTML = data;
+            if (id === 'navbar-placeholder') {
+              const menuBtn = document.getElementById("menu-btn");
+              const navLinks = document.getElementById("nav-links");
+              const menuBtnIcon = menuBtn.querySelector("i");
+              menuBtn.addEventListener("click", () => {
+                navLinks.classList.toggle("open");
+                const isOpen = navLinks.classList.contains("open");
+                menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+              });
+              navLinks.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+                menuBtnIcon.setAttribute("class", "ri-menu-line");
+              });
+            }
+          })
+          .catch(error => console.error('Error loading component:', error));
+      }
+
+      loadComponent('navbar-placeholder', '/components/navbar.html');
+      loadComponent('footer-placeholder', '/components/footer.html');
+    </script>
+  </body>
+</html>
