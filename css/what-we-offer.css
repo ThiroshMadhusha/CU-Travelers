@@ -1,10 +1,9 @@
 /* ================= WHAT WE OFFER SECTION ================= */
 
-
 .what-we-offer__container {
   padding: 4rem 1rem;
-  background: #fffffff5; /* Set to white for the entire section */
-  min-width: 100%; /* Ensure full width to cover body’s dark background */
+  background: #fffffff5;
+  min-width: 100%;
   border: none;
   box-shadow: none;
 }
@@ -19,7 +18,7 @@
 
 .what-we-offer__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -65,7 +64,7 @@
 
 /* Remove transform hover effect to avoid conflict */
 .offer-card:hover {
-  transform: none; /* Override previous transform */
+  transform: none;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -96,8 +95,8 @@
   .offer-card p {
     font-size: 0.9rem;
   }
-
 }
+
 @media (max-width: 576px) {
   .offer_section__header {
     font-size: 32px;
