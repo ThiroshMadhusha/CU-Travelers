@@ -1,0 +1,108 @@
+/* ================= WHAT WE OFFER SECTION ================= */
+
+
+.what-we-offer__container {
+  padding: 4rem 1rem;
+  background: #fffffff5; /* Set to white for the entire section */
+  min-width: 100%; /* Ensure full width to cover body’s dark background */
+  border: none;
+  box-shadow: none;
+}
+
+.offer_section__header {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+.what-we-offer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offer-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.offer-card span {
+  font-size: 2rem;
+  color: #01bda4;
+  margin-bottom: 1rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.offer-card h3 {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.offer-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Hover Effect */
+.offer-card:hover {
+  background: #01bda4;
+}
+
+.offer-card:hover span {
+  color: #fff;
+}
+
+/* Remove transform hover effect to avoid conflict */
+.offer-card:hover {
+  transform: none; /* Override previous transform */
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .what-we-offer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .what-we-offer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer_section__header {
+    font-size: 2rem;
+  }
+
+  .offer-card {
+    padding: 1rem;
+  }
+
+  .offer-card h3 {
+    font-size: 1rem;
+  }
+
+  .offer-card p {
+    font-size: 0.9rem;
+  }
+
+}
+@media (max-width: 576px) {
+  .offer_section__header {
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 2rem;
+  }
+}
