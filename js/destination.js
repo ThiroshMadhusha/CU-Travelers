@@ -7,7 +7,8 @@ const postsData = [
     price: '20',
     priceUnit: '/per tour',
     category: 'nature',
-    tag: 'Popular'
+    tag: 'Popular',
+    description: 'Explore the wild beauty of Yala National Park, home to leopards, elephants, and diverse birdlife.'
   },
   {
     img: '/assets/beachs/goyambokka2.jpg',
@@ -16,7 +17,8 @@ const postsData = [
     price: '99',
     priceUnit: '/per tour',
     category: 'beach',
-    tag: 'Famous'
+    tag: 'Famous',
+    description: 'Sri Lanka has a coastline of over 1600 km and is ideally suited for windsurfing, speed boating, and other water sports. Arugam Bay has azure skies and slanting coconut trees. If you are looking to surf in turquoise waters, Arugam Bay must be in your list of must-see tourist places in Sri Lanka.'
   },
   {
     img: '/assets/nature/tangallelagoon3.jpg',
@@ -25,7 +27,8 @@ const postsData = [
     price: '220',
     priceUnit: '/per tour',
     category: 'nature',
-    tag: 'Popular'
+    tag: 'Popular',
+    description: 'Experience the thrill of whale watching in Mirissa, where you can spot blue whales and dolphins in their natural habitat.'
   },
   {
     img: '/assets/popular/lighthouse.jpg',
@@ -34,7 +37,8 @@ const postsData = [
     price: '80',
     priceUnit: '/per tour',
     category: 'other',
-    tag: 'Famous'
+    tag: 'Famous',
+    description: 'Discover Udawalawe National Park, known for its large elephant population and scenic landscapes.'
   },
   {
     img: '/assets/popular/tea.jpg',
@@ -43,7 +47,8 @@ const postsData = [
     price: '30',
     priceUnit: '/per tour',
     category: 'other',
-    tag: 'Trending'
+    tag: 'Trending',
+    description: 'Relax on the pristine shores of Blue Beach Island, a hidden gem with crystal-clear waters.'
   },
   {
     img: '/assets/popular/anu.jpg',
@@ -52,7 +57,8 @@ const postsData = [
     price: '400',
     priceUnit: '/per tour',
     category: 'beach',
-    tag: 'New'
+    tag: 'New',
+    description: 'Enjoy the serene beauty of Goyambokka Beach, perfect for a peaceful getaway.'
   },
   {
     img: '/assets/popular/mat.jpg',
@@ -61,7 +67,8 @@ const postsData = [
     price: '25',
     priceUnit: '/per tour',
     category: 'nature',
-    tag: 'Explore'
+    tag: 'Explore',
+    description: 'Visit Rekawa Lagoon for a unique experience of bird watching and turtle nesting sites.'
   },
   {
     img: '/assets/popular/dam.jpg',
@@ -70,7 +77,8 @@ const postsData = [
     price: '35',
     priceUnit: '/per tour',
     category: 'other',
-    tag: 'Hidden'
+    tag: 'Hidden',
+    description: 'Climb to the top of Dondra Head Lighthouse for stunning coastal views.'
   },
   {
     img: '/assets/popular/handu.jpg',
@@ -79,7 +87,8 @@ const postsData = [
     price: '30',
     priceUnit: '/per tour',
     category: 'other',
-    tag: 'Classic'
+    tag: 'Classic',
+    description: 'Tour the historic Handunugoda Tea Estate and savor the finest Ceylon tea.'
   },
   {
     img: '/assets/popular/ancient.jpg',
@@ -88,7 +97,8 @@ const postsData = [
     price: '40',
     priceUnit: '/per tour',
     category: 'other',
-    tag: 'Historic'
+    tag: 'Historic',
+    description: 'Explore the ancient ruins of Anuradhapura, a UNESCO World Heritage site.'
   }
 ];
 
@@ -108,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
     postBox.querySelector('.post-title').textContent = post.title;
     postBox.querySelector('.post-title').href = `/pages/travel-view.html?title=${encodeURIComponent(post.title)}`; // Navigate to view page
     postBox.querySelector('.tag').textContent = post.tag;
+    postBox.querySelector('.book-btn').addEventListener('click', () => {
+      window.location.href = `/pages/travel-view.html?title=${encodeURIComponent(post.title)}`;
+    });
 
     postContainer.appendChild(postBox);
   });
