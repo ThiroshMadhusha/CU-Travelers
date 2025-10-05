@@ -1,0 +1,96 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><header class="main-header">
+  <div class="section__container hero-grid">
+    <div class="header-content">
+      <div class="explore-btn">
+        <span><i class="ri-heart-line"></i></span>
+        Explore Sri Lanka
+      </div>
+      <h1>Taxi and Tours around <br> <span>Sri Lanka!</span></h1>
+      <p>24x7 Reliable & comfortable Taxi service & No.1 Tour arrangement company in Tangalle, Sri Lanka.</p>
+      <h2>Travel With Us!</h2>
+      <div class="header-buttons">
+        <button class="get-taxi-btn">
+          <span><i class="ri-car-line"></i></span>
+          Get a Taxi
+        </button>
+      </div>
+      <div class="header-stats">
+        <div class="header-stats-card">
+          <h4>6 +</h4>
+          <h4>Vehicles</h4>
+        </div>
+
+        <div class="header-stats-card">
+          <h4>50 +</h4>
+          <h4>Destinations</h4>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="media-container left-video">
+        <video class="media-video" autoplay muted loop playsinline>
+          <source src="assets/videos/srilanka2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="media-container middle-image">
+        <img src="assets/hero/sigiriya.jpg" alt="Middle Image" class="media-image">
+      </div>
+      <div class="media-container right-video">
+        <video class="media-video" autoplay muted loop playsinline>
+          <source src="assets/videos/srilanka.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <div class="inquiry-form centered-inquiry">
+      <div class="form-group">
+        <label>Any Question? Happy to help!</label>
+        <div class="form-fields">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <input type="tel" placeholder="Phone">
+          <textarea placeholder="Question"></textarea>
+          <button class="inquire-btn">
+            <span><i class="ri-whatsapp-line"></i></span>
+            INQUIRE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
