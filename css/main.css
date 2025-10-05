@@ -1,0 +1,433 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-color: #223439;
+  --primary-color-dark: #0a1e27;
+  --secondary-color: #1cf7d9;
+  --text-dark: #333333;
+  --text-light: #d4d4d4;
+  --white: #ffffff;
+  --max-width: 1200px;
+  --gradient-1: linear-gradient(to bottom, var(--primary-color), #1d2127);
+  --gradient-2: linear-gradient(to bottom, #1d74ec, #19eee79c);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 3rem 1rem;
+}
+
+.section__containers {
+  max-width: var(--max-width);
+  padding: 3rem 0;
+}
+
+
+.section__header {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 3rem;
+  text-align: center;
+}
+
+.section__description {
+  color: var(--text-light);
+  text-align: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  white-space: nowrap;
+  color: var(--text-dark);
+  background-color: var(--secondary-color);
+  border-radius: 5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.googlemap-btn {
+  padding: 1px 5px;  /* Smaller padding for a compact button */
+  outline: none;
+  border: none;
+  font-size: 0.875rem;  /* Slightly smaller text */
+  color: #fff;  /* White text for contrast */
+  background: linear-gradient(45deg, #4285F4, #34A853, #FBBC05, #EA4335);  /* Google colors */
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+  font-weight: 500;  /* Slightly lighter weight */
+  height: 32px;  /* Adjusted height */
+  min-width: 120px;  /* Smaller width */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons{
+  display: inline-block;
+  background: linear-gradient(101deg, hsl(27, 72%, 52%), hsl(228, 66%, 47%));
+  color: #fff;
+  padding: 10px 20px ;
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 6px 12px hsla(228, 66%, 45%, .25);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.buttons{
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  border: none;
+}
+
+
+.buttons:hover{
+  box-shadow: 0 6px 12px hsla(228, 66%, 45%, .25);
+}
+
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white);
+}
+
+.logo__travel {
+    color: var(--white);
+  }
+  
+  .logo__sl {
+    color: var(--secondary-color); /* This should match your button color */
+  }
+  
+img {
+  display: flex;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color-dark);
+}
+
+/* General Styles */
+nav {
+  position: fixed;
+  isolation: isolate;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  z-index: 9;
+}
+
+.nav__header {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: var(--gradient-1);
+}
+
+.nav__menu__btn {
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav__links {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  background-image: var(--gradient-1);
+  transition: 0.5s;
+  z-index: -1;
+  transform: translateY(-100%);
+  font-weight: bold;
+}
+
+.nav__links.open {
+  transform: translateY(0);
+}
+
+.nav__links a {
+  color: var(--text-light);
+}
+
+.nav__links a:hover {
+  color: var(--secondary-color);
+}
+
+.nav__links .mobile-btn .btn a {
+  color: #fff;
+}
+
+/* Hide the button container by default for desktop */
+.nav__btns {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .nav__links {
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Show button in mobile view */
+  .nav__links .mobile-btn {
+    display: block;
+    width: fit-content;
+    margin: 0.5rem auto 0;
+  }
+
+  /* Hide desktop button */
+  .nav__btns {
+    display: none;
+  }
+}
+
+/* Desktop and Tablet Styles */
+@media (min-width: 769px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+
+  .nav__links {
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    background-image: none;
+    transform: none;
+  }
+
+  /* Hide mobile button */
+  .mobile-btn {
+    display: none;
+  }
+
+  /* Show desktop button on the right */
+  .nav__btns {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+}
+
+/* Additional Styles for Different Screen Sizes */
+
+/* Mobile styles for screens 390px and smaller */
+@media (max-width: 390px) {
+  .header__container h1 {
+    padding-right: 10px;
+  }
+
+  .header__content p {
+    padding-left: 1rem 0;
+    margin-right: 40px;
+  }
+
+  .header__container h2 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    text-align: center;
+  }
+}
+
+/* Mobile styles for screens 420px and smaller */
+@media (max-width: 420px) {
+  .header__container {
+    padding: 0.5rem 0;
+  }
+
+  .header__content p {
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
+  .header__container h2 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    text-align: center;
+  }
+  .footer__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1rem;
+    text-align: center;
+  }
+}
+
+/* Styles for screens 540px and smaller */
+@media (max-width: 540px) {
+  .header__container h1 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+  }
+
+  .header__container h2 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+    text-align: center;
+  }
+  .footer__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1rem;
+    text-align: center;
+  }
+}
+
+/* Styles for screens larger than 540px */
+@media (min-width: 541px) {
+  .header__container h1 {
+    font-size: 4.5rem;
+    line-height: 6rem;
+  }
+
+  .genre__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1rem;
+    text-align: center;
+  }
+}
+
+
+
+@media (width > 768px) {
+  nav {
+    position: static;
+    padding-block: 2rem 1rem;
+    padding-inline: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav__header {
+    flex: 1;
+    padding: 0;
+    background-image: none;
+  }
+
+  .nav__menu__btn {
+    display: none;
+  }
+
+  .nav__links {
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    background-image: none;
+    transform: none;
+  }
+
+  .nav__btns {
+    display: flex;
+    flex: 1;
+  }
+
+  .footer__links {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    .footer__links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 1rem;
+      text-align: center;
+    }
+  }
+  
+  @media (width > 1024px) {
+    .genre__grid {
+      gap: 2rem;
+    }
+
+    .footer__links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 1rem;
+      text-align: center;
+    }
+  }
+  
+
+
+/* Footer Designs */
+
+/* Footer */
+
+/* .footer__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1rem;
+    text-align: center;
+  }
+   */
+  .footer__logo {
+    grid-area: 1/1/2/4;
+  }
+  
+  .footer__links li:not(.footer__logo) a {
+    color: var(--text-light);
+  }
+  
+  .footer__links li:not(.footer__logo) a:hover {
+    color: var(--secondary-color);
+  }
+  
+  .footer__bar {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+  }
+  
+  
