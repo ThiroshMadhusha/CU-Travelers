@@ -1,0 +1,320 @@
+/* ================= CONTACT HERO SECTION ================= */
+
+.contact-header {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile-first */
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  padding: 0 1rem;
+}
+
+.contact-content {
+  max-width: 100%;
+  padding: 2rem 0 0 0;
+  text-align: left;
+}
+
+.contact-data {
+  margin-bottom: 2rem;
+}
+
+.section__subtitle {
+  display: block;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.section__title {
+  font-size: 2.5rem;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.section__title span {
+  color: #ff914d;
+}
+
+.contact__description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+/* Explore Button */
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #ff914d;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #e6782e;
+}
+
+/* Contact Cards */
+.contact__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns for Call and WhatsApp */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact__emailcard {
+  width: 100%; /* Full width for Email card */
+}
+
+.contact__card-box {
+  border: 2px solid #e0e0e0;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  transition: 0.3s;
+  background: #fff;
+}
+
+.contact__card-info {
+  display: flex;
+  align-items: center;
+  column-gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact__cards .contact__card-box i {
+  padding: 8px;
+  background-color: #e6f0fa;
+  border-radius: 6px;
+  font-size: 1.75rem;
+  color: #25d366;
+}
+
+.contact__emailcard i {
+  padding: 8px;
+  background-color: #e6f0fa;
+  border-radius: 6px;
+  font-size: 1.75rem;
+  color: #d44638;
+}
+
+.contact__card-title {
+  font-size: 1rem;
+  color: #222;
+  margin: 0;
+}
+
+.contact__card-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.25rem 0 0;
+}
+
+.contact__card-button {
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  width: 100%;
+  background: #e6f0fa;
+  color: #25d366;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact__emailcard .contact__card-button {
+  color: #d44638;
+}
+
+.contact__card-button:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+.contact__emailcard .contact__card-button:hover {
+  background: #d44638;
+  color: #fff;
+}
+
+.contact__card-box:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Circle Image - Mobile default: between button and title */
+.contact-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.overlay-circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 993px) {
+  .contact-grid {
+    grid-template-columns: 1fr; /* keep single grid */
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    align-items: start;
+    text-align: left;
+  }
+
+  /* 1. Fix Contact Us button width */
+  .contact-btn {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0.5rem 0.9rem;   /* 🔹 reduce padding */
+    font-size: 0.9rem;        /* 🔹 smaller font */
+    width: fit-content;       /* 🔹 only as wide as content */
+  }
+
+  /* 2. Image alignment */
+  .contact-image {
+    grid-column: 2;
+    grid-row: 1 / 6;
+    margin: 40px 0 0 0; /* 🔹 reduce top margin */
+    justify-self: end;
+  }
+
+  /* 3. Headings + paragraph spacing */
+  h1 {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0.5rem; /* 🔹 tighter */
+  }
+
+  h2 {
+    grid-column: 1;
+    grid-row: 3;
+    margin-bottom: 0.5rem; /* 🔹 tighter */
+  }
+
+  p {
+    grid-column: 1;
+    grid-row: 4;
+    margin-bottom: 0.75rem; /* 🔹 reduced gap before cards */
+  }
+
+  /* 4. Cards spacing */
+  .contact__cards {
+    grid-column: 1;
+    grid-row: 5;
+    gap: 0.75rem;          /* 🔹 smaller gap between Call + WhatsApp */
+    margin-bottom: 0.75rem;
+  }
+
+  /* 5. Email card spacing */
+  .contact__emailcard {
+    grid-column: 1;
+    grid-row: 6;
+  }
+
+  /* 6. Extra bottom gap before footer */
+  .contact-header {
+    padding-bottom: 3rem; /* 🔹 breathing space above footer */
+  }
+
+  /* 7. Circle image size */
+  .overlay-circle {
+    width: 420px;  /* 🔹 slightly smaller */
+    height: 420px;
+  }
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .contact-content {
+    text-align: center;
+    padding: 1rem 0 0 0;
+  }
+
+  .overlay-circle {
+    width: 400px;
+    height: 400px;
+  }
+
+  .contact__emailcard {
+    grid-column: 1;
+    grid-row: 6;
+    margin-top: 0.5rem;    /* 🔹 reduced gap above */
+    margin-bottom: 2rem;   /* 🔹 consistent bottom */
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-header {
+    padding-top: 80px;
+  }
+
+  .overlay-circle {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact__cards {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+  }
+
+  .contact-content h1 {
+    font-size: 2rem;
+  }
+
+  .section__title {
+    font-size: 2rem;
+  }
+
+  .overlay-circle {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 420px) {
+  .overlay-circle {
+    width: 280px;
+    height: 280px;
+  }
+
+}
