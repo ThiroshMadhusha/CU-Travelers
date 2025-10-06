@@ -97,16 +97,11 @@
             if (id === 'hero-placeholder') {
               const videos = document.querySelectorAll('.media-video');
               videos.forEach(video => {
-                video.onloadeddata = function() {
-                  video.playbackRate = 0.6;
-                  video.addEventListener('timeupdate', function() {
-                    const duration = this.duration;
-                    if (duration && this.currentTime >= duration - 4) {
-                      this.currentTime = duration - 2;
-                      this.play();
-                    }
-                  });
-                };
+                video.loop = true; // Ensure native looping is enabled
+                video.addEventListener('loadeddata', () => {
+                  video.playbackRate = 0.6; // Set playback rate after video is ready
+                  video.play(); // Start playback
+                });
               });
 
               // Initialize WhatsApp inquiry functionality
