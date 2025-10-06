@@ -52,8 +52,42 @@ section {
   flex: 1;
   max-height: 80vh;
   overflow-y: auto;
-  padding-right: 1rem;
+  padding-right: 0;
   border-right: 1px solid #ccc;
+}
+
+/* Hide scrollbar but keep functionality */
+.travel-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.travel-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.travel-content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.travel-content:hover::-webkit-scrollbar-thumb {
+  opacity: 1;
+}
+
+.travel-content::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Firefox scrollbar */
+.travel-content {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.travel-content:hover {
+  scrollbar-color: #ccc transparent;
 }
 
 .travel-image {
@@ -283,30 +317,51 @@ section {
   background: #e07b33;
 }
 
+/* Mobile and Tablet: Reviews after booking form */
 @media (max-width: 768px) {
   .travel-view {
     flex-direction: column;
     margin-top: 70px;
   }
 
-  .travel-booking {
-    position: static;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
   .travel-content {
     max-height: none;
     overflow-y: visible;
     border-right: none;
+    padding-right: 0;
   }
 
-  .travel-description + .travel-booking {
+  /* Remove margin-right on mobile */
+  .travel-info,
+  .travel-description,
+  .travel-reviews {
+    margin-right: 0;
+  }
+
+  .travel-booking {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+    order: 2;
+  }
+
+  .travel-reviews {
+    order: 3;
     margin-top: 1rem;
   }
 
-  .travel-booking + .travel-reviews {
-    margin-top: 1rem;
+  /* Reorder: description, booking, reviews */
+  .travel-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .travel-info {
+    order: 1;
+  }
+  
+  .travel-description {
+    order: 2;
   }
 }
 
@@ -315,6 +370,14 @@ section {
     margin: 0 auto;
     width: 95%;
   }
+    .travel-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+}
 }
 
 @media (max-width: 820px) {
@@ -322,6 +385,14 @@ section {
     margin: 0 auto;
     width: 90%;
   }
+    .travel-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+}
 }
 
 @media (max-width: 768px) {
@@ -334,6 +405,14 @@ section {
   .home-title {
     font-size: 3rem;
   }
+    .travel-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+}
 }
 
 @media (max-width: 570px) {
@@ -342,4 +421,12 @@ section {
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
+  .travel-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+}
 }
