@@ -13,13 +13,13 @@
     <div class="travel-content">
       <img src="" alt="" class="travel-image" id="travel-image">
       <div class="travel-info">
-        <p><strong>Arugam Bay</strong></p>
+        <p><strong id="travel-title"></strong></p>
         <p class="location-info">
-          <box-icon name="map" type="solid" color="#4CAF50"></box-icon> <span>Tangalle</span>
+          <box-icon name="map" type="solid" color="#4CAF50"></box-icon> <span id="travel-location"></span>
         </p>
         <br>
         <p><strong>Description</strong></p>
-        <p>Sri Lanka has a coastline of over 1600 km and is ideally suited for windsurfing, speed boating, and other water sports. Arugam Bay has azure skies and slanting coconut trees. If you are looking to surf in turquoise waters, Arugam Bay must be in your list of must-see tourist places in Sri Lanka.</p>
+        <p id="travel-description"></p>
       </div>
       <div class="travel-reviews" id="travel-reviews">
         <p><strong>Reviews (2)</strong></p>
@@ -50,7 +50,7 @@
       <h3>Information</h3>
       <div class="form-group">
         <label>Location</label>
-        <input type="text" placeholder="Arugam Bay" readonly>
+        <input type="text" placeholder="Arugam Bay" readonly id="booking-location">
       </div>
       <div class="form-group">
         <label>Guest Name</label>
@@ -76,7 +76,7 @@
           <option value="van">Van</option>
         </select>
       </div>
-      <div class="price total">Total <span>$104</span></div>
+      <div class="price total">Total <span id="total-price"></span></div>
       <button class="book-btn"><box-icon name="whatsapp" type="logo" color="#fff"></box-icon> Book via WhatsApp</button>
     </div>
   </div>
@@ -122,21 +122,24 @@
     }
   </script>
 
+  <script src="/js/destination.js"></script> <!-- Include destination.js -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const title = urlParams.get('title');
-      const post = postsData.find(p => p.title === decodeURIComponent(title));
+      const title = decodeURIComponent(urlParams.get('title'));
 
+      const post = postsData.find(p => p.title === title);
       if (post) {
         document.getElementById('travel-image').src = post.img;
-        document.querySelector('.travel-info strong').textContent = post.title;
-        document.querySelector('.travel-info .location-info').innerHTML = `<box-icon name="map" type="logo" color="#4CAF50"></box-icon> <span>${post.location}</span>`;
-        document.getElementById('travel-description').innerHTML = `<p><strong>Description</strong></p><p>${post.description}</p>`;
+        document.getElementById('travel-title').textContent = post.title;
+        document.getElementById('travel-location').textContent = post.location;
+        document.getElementById('travel-description').textContent = post.description;
+        document.getElementById('booking-location').value = post.location;
+        document.getElementById('total-price').textContent = '$' + post.price;
       }
 
-      // Set default date to today (02:54 AM +0530, October 06, 2025)
-      const today = new Date('2025-10-06T02:54:00+0530').toISOString().split('T')[0];
+      // Set default date to today (03:21 AM +0530, October 06, 2025)
+      const today = new Date('2025-10-06T03:21:00+0530').toISOString().split('T')[0];
       document.getElementById('booking-date').value = today;
 
       // Star rating interactivity
