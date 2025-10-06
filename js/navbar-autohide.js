@@ -21,7 +21,7 @@
             const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
             
             // Reduced trigger distance: hide when within 300px of footer (adjust this value as needed)
-            const triggerDistance = 300; // Change this to make it hide sooner/later
+            const triggerDistance = 100; // Change this to make it hide sooner/later
             
             if (distanceFromBottom <= triggerDistance) {
                 // Sliding up with animation
