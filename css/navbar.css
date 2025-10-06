@@ -69,17 +69,17 @@ nav {
   z-index: 1000;
   background-image: var(--gradient-1);
   padding: 0;
-  margin: 0;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
               opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav__header {
-  padding: 1rem 2rem;
+  padding: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-image: var(--gradient-1);
 }
 
 .nav__logo a {
@@ -181,25 +181,19 @@ nav {
 @media (min-width: 769px) {
   nav {
     position: fixed;
-    display: flex;
+    padding-block: 2rem 1rem;
+    padding-inline: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
-  }
-
-  /* Create inner wrapper for content constraint */
-  nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: var(--gradient-1);
-    z-index: -1;
+    gap: 2rem;
+    max-width: 100%;
   }
 
   .nav__header {
-    padding: 0.5rem 0;
-    flex: 0 0 auto;
-    max-width: 300px;
+    padding: 0;
+    background-image: none;
+    width: auto;
   }
 
   .nav__menu__btn {
@@ -213,8 +207,6 @@ nav {
     background-image: none;
     transform: none;
     justify-content: center;
-    flex: 1;
-    max-width: 600px;
   }
 
   /* Hide mobile button */
@@ -226,7 +218,6 @@ nav {
   .nav__btns {
     display: flex;
     align-items: center;
-    flex: 0 0 auto;
   }
 
   /* Increase logo size for desktop and tablets */
@@ -240,5 +231,12 @@ nav {
 
   .logo__icon {
     font-size: 2.5rem;
+  }
+}
+
+/* Large screens - constrain content width */
+@media (min-width: 1400px) {
+  nav {
+    padding-inline: calc((100% - var(--max-width)) / 2);
   }
 }
