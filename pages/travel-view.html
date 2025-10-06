@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="travel-view-page">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <link rel="stylesheet" href="/css/travel-view.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
   <title>Travel View</title>
 </head>
 <body>
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
   <div class="travel-view container">
     <div class="travel-content">
       <img src="" alt="" class="travel-image" id="travel-image">
@@ -81,6 +87,9 @@
     </div>
   </div>
 
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
   <script type="text/javascript">
     var gk_isXlsx = false;
     var gk_xlsxFileLookup = {};
@@ -124,6 +133,37 @@
 
   <script src="/js/destination.js"></script> <!-- Include destination.js -->
   <script>
+    // Function to load navbar and footer
+    function loadComponent(id, file) {
+      fetch(file)
+        .then(response => {
+          if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+          if (id === 'navbar-placeholder') {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+            const menuBtnIcon = menuBtn.querySelector("i");
+            menuBtn.addEventListener("click", () => {
+              navLinks.classList.toggle("open");
+              const isOpen = navLinks.classList.contains("open");
+              menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+            });
+            navLinks.addEventListener("click", () => {
+              navLinks.classList.remove("open");
+              menuBtnIcon.setAttribute("class", "ri-menu-line");
+            });
+          }
+        })
+        .catch(error => console.error('Error loading component:', error));
+    }
+
+    // Load navbar and footer
+    loadComponent('navbar-placeholder', '/components/navbar.html');
+    loadComponent('footer-placeholder', '/components/footer.html');
+
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const title = decodeURIComponent(urlParams.get('title'));
@@ -138,8 +178,8 @@
         document.getElementById('total-price').textContent = '$' + post.price;
       }
 
-      // Set default date to today (03:21 AM +0530, October 06, 2025)
-      const today = new Date('2025-10-06T03:21:00+0530').toISOString().split('T')[0];
+      // Set default date to today (09:42 AM +0530, October 06, 2025)
+      const today = new Date('2025-10-06T09:42:00+0530').toISOString().split('T')[0];
       document.getElementById('booking-date').value = today;
 
       // Star rating interactivity
@@ -159,5 +199,6 @@
     });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="/js/navbar-autohide.js"></script>
 </body>
 </html>
