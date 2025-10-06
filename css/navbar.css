@@ -58,23 +58,28 @@ ul {
   text-decoration: none;
 }
 
-/* Navigation Styles */
+/* Navigation Styles - Full Width Background */
 nav {
   position: fixed;
   isolation: isolate;
   width: 100%;
-  max-width: var(--max-width);
-  margin-inline: auto;
-  z-index: 9;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  background-image: var(--gradient-1);
+  padding: 0;
+  margin: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav__header {
-  padding: 1rem;
+  padding: 1rem 2rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: var(--gradient-1);
 }
 
 .nav__logo a {
@@ -175,19 +180,26 @@ nav {
 /* Desktop and Tablet Styles */
 @media (min-width: 769px) {
   nav {
-    position: static;
-    padding-block: 2rem 1rem;
-    padding-inline: 1rem;
+    position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: center;
+    padding: 1rem 2rem;
+  }
+
+  /* Create inner wrapper for content constraint */
+  nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--gradient-1);
+    z-index: -1;
   }
 
   .nav__header {
-    flex: 1;
-    padding: 0;
-    background-image: none;
+    padding: 0.5rem 0;
+    flex: 0 0 auto;
+    max-width: 300px;
   }
 
   .nav__menu__btn {
@@ -200,6 +212,9 @@ nav {
     flex-direction: row;
     background-image: none;
     transform: none;
+    justify-content: center;
+    flex: 1;
+    max-width: 600px;
   }
 
   /* Hide mobile button */
@@ -210,8 +225,8 @@ nav {
   /* Show desktop button on the right */
   .nav__btns {
     display: flex;
-    flex: 1;
     align-items: center;
+    flex: 0 0 auto;
   }
 
   /* Increase logo size for desktop and tablets */
