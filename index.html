@@ -36,7 +36,7 @@
         CUToursSL is the ultimate platform for discovering and exploring the best travel destinations. We aim to connect travelers with popular and nearby tourist spots.
       </h2>
     </section>
-   <section class="section__container music__container">
+    <section class="section__container music__container">
       <div class="music__content">
         <h2 class="section__header">
           Travel with US around <br> <span>Sri Lanka</span> Today!
@@ -68,6 +68,7 @@
     <script src="/js/main.js"></script>
     <script src="/js/testimonials.js"></script>
     <script src="/js/vehicles.js"></script>
+    <script src="/js/featuredPosts.js"></script>
     <script>
       function loadComponent(id, file) {
         fetch(file)
@@ -77,6 +78,7 @@
           })
           .then(data => {
             document.getElementById(id).innerHTML = data;
+            console.log(`Component ${id} loaded from ${file}`);
 
             if (id === 'navbar-placeholder') {
               const menuBtn = document.getElementById("menu-btn");
@@ -111,7 +113,6 @@
                 });
               });
 
-              
               const inquireBtn = document.querySelector('.inquire-btn');
               const formFields = document.querySelectorAll('.inquiry-form input, .inquiry-form textarea');
 
@@ -127,6 +128,14 @@
             if (id === 'vehicles-placeholder') {
               if (typeof initVehiclesSlider === 'function') {
                 initVehiclesSlider();
+              }
+            }
+            if (id === 'featured-placeholder') {
+              if (typeof initFeaturedPosts === 'function') {
+                initFeaturedPosts();
+                console.log('initFeaturedPosts called');
+              } else {
+                console.error('initFeaturedPosts function not found');
               }
             }
           })
