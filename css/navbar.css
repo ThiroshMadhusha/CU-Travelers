@@ -58,7 +58,6 @@ ul {
   text-decoration: none;
 }
 
-/* Navigation Styles - Full Width Background */
 nav {
   position: fixed;
   isolation: isolate;
@@ -93,14 +92,24 @@ nav {
 
 .logo__travel {
   color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
 .logo__cu {
-  color: #FF8C00;
+  color: var(--cu-orange);
+}
+
+.logo__sl {
+  background: linear-gradient(90deg, #ffbe33 0%, #138808 50%, #f56f02 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .logo__icon {
-  color: #4A90E2;
+  color: var(--car-blue);
   font-size: 1.8rem;
   font-weight: normal;
   display: flex;
@@ -152,32 +161,27 @@ nav {
   color: var(--text-dark);
 }
 
-/* Hide the button container by default for desktop */
 .nav__btns {
   display: none;
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .nav__links {
     gap: 1.5rem;
     padding-bottom: 1rem;
   }
 
-  /* Show button in mobile view */
   .nav__links .mobile-btn {
     display: block;
     width: fit-content;
     margin: 0.5rem auto 0;
   }
 
-  /* Hide desktop button */
   .nav__btns {
     display: none;
   }
 }
 
-/* Desktop and Tablet Styles */
 @media (min-width: 769px) {
   nav {
     position: fixed;
@@ -209,18 +213,15 @@ nav {
     justify-content: center;
   }
 
-  /* Hide mobile button */
   .mobile-btn {
     display: none;
   }
 
-  /* Show desktop button on the right */
   .nav__btns {
     display: flex;
     align-items: center;
   }
 
-  /* Increase logo size for desktop and tablets */
   .nav__logo a {
     font-size: 2rem;
   }
@@ -234,7 +235,6 @@ nav {
   }
 }
 
-/* Large screens - constrain content width */
 @media (min-width: 1400px) {
   nav {
     padding-inline: calc((100% - var(--max-width)) / 2);
