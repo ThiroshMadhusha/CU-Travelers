@@ -28,27 +28,22 @@
         <p id="travel-description"></p>
       </div>
       <div class="travel-reviews" id="travel-reviews">
-        <p><strong>Reviews (2)</strong></p>
+        <p><strong>Reviews (<span id="review-count">0</span>)</strong></p>
         <div class="review-form">
-          <p>Rate this tour: <span class="rating-stars" id="rating-stars">☆☆☆☆☆</span></p>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" id="review-guest-name">
+          </div>
           <textarea placeholder="Share your feedback..." id="review-comment"></textarea>
-          <button class="book-btn submit-review" style="float: right;">Submit</button>
-        </div>
-        <div class="review-item">
-          <img src="/assets/hero/avatar.jpg" alt="User Icon" class="review-avatar">
-          <div class="review-details">
-            <p class="review-author">Thirosh <span class="review-rating">Rating: <span class="rating-stars">★★★★★</span></span></p>
-            <p class="review-date">January 28, 2023</p>
-            <p class="review-comment">Amazing Tour</p>
+          <div class="rating-row">
+            <div class="rating-section">
+              <label>Rate this tour:</label>
+              <span class="rating-stars" id="rating-stars">☆☆☆☆☆</span>
+            </div>
+            <button class="book-btn submit-review">Publish</button>
           </div>
         </div>
-        <div class="review-item">
-          <img src="/assets/hero/avatar.jpg" alt="User Icon" class="review-avatar">
-          <div class="review-details">
-            <p class="review-author">Thirosh <span class="review-rating">Rating: <span class="rating-stars">★★★★★</span></span></p>
-            <p class="review-date">January 28, 2023</p>
-            <p class="review-comment">Amazing Tour</p>
-          </div>
+        <div id="reviews-list">
+          <!-- Reviews will be dynamically added here -->
         </div>
       </div>
     </div>
@@ -74,14 +69,6 @@
         <label>Guest Group Size</label>
         <input type="number" placeholder="Guest Group Size" value="1" min="1">
       </div>
-      <!-- <div class="form-group">
-        <label>Vehicle</label>
-        <select id="vehicle-select">
-          <option value="standard">Standard Car</option>
-          <option value="suv">SUV</option>
-          <option value="van">Van</option>
-        </select>
-      </div> -->
       <div class="price total">Total <span id="total-price"></span></div>
       <button class="book-btn"><box-icon name="whatsapp" type="logo" color="#fff"></box-icon> Book via WhatsApp</button>
     </div>
@@ -104,22 +91,17 @@
           var firstSheetName = workbook.SheetNames[0];
           var worksheet = workbook.Sheets[firstSheetName];
 
-          // Convert sheet to JSON to filter blank rows
           var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-          // Filter out blank rows (rows where all cells are empty, null, or undefined)
           var filteredData = jsonData.filter(row => row.some(filledCell));
 
-          // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
           var headerRowIndex = filteredData.findIndex((row, index) =>
             row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
           );
-          // Fallback
           if (headerRowIndex === -1 || headerRowIndex > 25) {
             headerRowIndex = 0;
           }
 
-          // Convert filtered JSON back to CSV
-          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
           csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
           return csv;
         } catch (e) {
@@ -131,7 +113,8 @@
     }
   </script>
 
-  <script src="/js/destination.js"></script> <!-- Include destination.js -->
+  <script src="/js/destination.js"></script>
+  <script src="/js/reviews.js"></script>
   <script>
     // Function to load navbar and footer
     function loadComponent(id, file) {
@@ -142,6 +125,7 @@
         })
         .then(data => {
           document.getElementById(id).innerHTML = data;
+          console.log(`Component ${id} loaded from ${file}`);
           if (id === 'navbar-placeholder') {
             const menuBtn = document.getElementById("menu-btn");
             const navLinks = document.getElementById("nav-links");
@@ -176,26 +160,13 @@
         document.getElementById('travel-description').textContent = post.description;
         document.getElementById('booking-location').value = post.location;
         document.getElementById('total-price').textContent = '$' + post.price;
+      } else {
+        console.error('Post not found for title:', title);
       }
 
-      // Set default date to today (09:42 AM +0530, October 06, 2025)
-      const today = new Date('2025-10-06T09:42:00+0530').toISOString().split('T')[0];
+      // Set default date to today
+      const today = new Date('2025-10-09T02:17:00+0530').toISOString().split('T')[0];
       document.getElementById('booking-date').value = today;
-
-      // Star rating interactivity
-      const stars = document.getElementById('rating-stars');
-      let rating = 0;
-      stars.addEventListener('click', (e) => {
-        const rect = stars.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const starWidth = rect.width / 5;
-        rating = Math.ceil(clickX / starWidth);
-        updateStars();
-      });
-
-      function updateStars() {
-        stars.textContent = '☆☆☆☆☆'.slice(5 - rating) + '★★★★★'.slice(0, rating);
-      }
     });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
