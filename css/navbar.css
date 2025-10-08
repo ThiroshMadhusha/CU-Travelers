@@ -8,7 +8,7 @@
   --text-light: #d4d4d4;
   --white: #ffffff;
   --max-width: 1200px;
-  --gradient-1: linear-gradient(to bottom, var(--primary-color), #1d2127);
+  --gradient-1: linear-gradient(#354152);
   --cu-orange: #FF8C00;
   --travels-dark: #333333;
   --car-blue: #4A90E2;
@@ -73,7 +73,7 @@ nav {
 }
 
 .nav__header {
-  padding: 1rem;
+  padding: 0.5rem; /* Reduced from 1rem */
   width: 100%;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 1.5rem;
+  font-size: 1.25rem; /* Reduced from 1.5rem */
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -95,6 +95,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 0;
+  font-size: 1.25rem; /* Reduced from 1.5rem */
 }
 
 .logo__cu {
@@ -110,7 +111,7 @@ nav {
 
 .logo__icon {
   color: var(--car-blue);
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* Reduced from 1.8rem */
   font-weight: normal;
   display: flex;
   align-items: center;
@@ -121,7 +122,7 @@ nav {
 }
 
 .nav__menu__btn {
-  font-size: 1.5rem;
+  font-size: 1.25rem; /* Reduced from 1.5rem */
   color: var(--white);
   cursor: pointer;
   font-weight: bold;
@@ -129,15 +130,15 @@ nav {
 
 .nav__links {
   position: absolute;
-  top: 64px;
+  top: 48px; /* Adjusted to account for reduced .nav__header padding */
   left: 0;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem; /* Reduced from 2rem */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem; /* Reduced from 2rem */
   background-image: var(--gradient-1);
   transition: 0.5s;
   z-index: -1;
@@ -167,8 +168,8 @@ nav {
 
 @media (max-width: 768px) {
   .nav__links {
-    gap: 1.5rem;
-    padding-bottom: 1rem;
+    gap: 1rem; /* Reduced from 1.5rem */
+    padding-bottom: 0.5rem; /* Reduced from 1rem */
   }
 
   .nav__links .mobile-btn {
@@ -185,7 +186,7 @@ nav {
 @media (min-width: 769px) {
   nav {
     position: fixed;
-    padding-block: 2rem 1rem;
+    padding-block: 1rem 0.5rem; /* Reduced from 2rem 1rem */
     padding-inline: 2rem;
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -223,15 +224,15 @@ nav {
   }
 
   .nav__logo a {
-    font-size: 2rem;
+    font-size: 1.5rem; /* Reduced from 2rem */
   }
 
   .logo__travel {
-    font-size: 2rem;
+    font-size: 1.5rem; /* Reduced from 2rem */
   }
 
   .logo__icon {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced from 2.5rem */
   }
 }
 
