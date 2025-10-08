@@ -45,7 +45,7 @@ section {
   margin: 0 auto;
   gap: 2rem;
   background: #fff;
-  margin-top: 80px;
+  margin-top: 60px; /* Adjusted for reduced navbar height (~48px mobile, ~60px desktop) */
 }
 
 .travel-content {
@@ -53,7 +53,6 @@ section {
   max-height: 80vh;
   overflow-y: auto;
   padding-right: 0;
-  border-right: 1px solid #ccc;
 }
 
 /* Hide scrollbar but keep functionality */
@@ -151,31 +150,72 @@ section {
 
 .travel-reviews .review-form {
   margin-bottom: 1.5rem;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #f9f9f9;
   border-radius: 0.5rem;
-  position: relative;
-  overflow: hidden;
+}
+
+.travel-reviews .review-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.travel-reviews .review-form input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background: #fff;
+  font-size: 0.95rem;
 }
 
 .travel-reviews .review-form textarea {
   width: 100%;
-  height: 80px;
-  padding: 0.5rem;
+  height: 100px;
+  padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
-  margin: 0.5rem 0;
+  margin-bottom: 1rem;
   resize: vertical;
   background: #fff;
+  font-size: 0.95rem;
+}
+
+.travel-reviews .review-form .rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.travel-reviews .review-form .rating-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.travel-reviews .review-form .rating-section label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
 }
 
 .travel-reviews .review-form .submit-review {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: auto;
-  padding: 0.5rem 1rem;
-  float: none;
+  padding: 0.75rem 2rem;
+  background: var(--second-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.travel-reviews .review-form .submit-review:hover {
+  background: #e07b33;
 }
 
 .travel-reviews .review-item {
@@ -317,11 +357,59 @@ section {
   background: #e07b33;
 }
 
-/* Mobile and Tablet: Reviews after booking form */
+/* Toast Notification Styles */
+.toast-notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  transform: translateX(400px);
+  transition: transform 0.3s ease;
+  font-size: 0.95rem;
+  max-width: 350px;
+  word-wrap: break-word;
+}
+
+.toast-notification.show {
+  transform: translateX(0);
+}
+
+.toast-success {
+  background: #4CAF50;
+}
+
+.toast-error {
+  background: #f44336;
+}
+
+.toast-warning {
+  background: #ff9800;
+}
+
 @media (max-width: 768px) {
+  .toast-notification {
+    top: 70px;
+    right: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+    transform: translateY(-150px);
+  }
+
+  .toast-notification.show {
+    transform: translateY(0);
+  }
+}
+
+/* Mobile and Tablet: Image, Info, Description, Booking Form, Reviews */
+@media (max-width: 780px) {
   .travel-view {
     flex-direction: column;
-    margin-top: 70px;
+    margin-top: 48px;
   }
 
   .travel-content {
@@ -331,37 +419,38 @@ section {
     padding-right: 0;
   }
 
-  /* Remove margin-right on mobile */
-  .travel-info,
-  .travel-description,
-  .travel-reviews {
-    margin-right: 0;
-  }
-
+  /* Move travel-booking out of sidebar into main flow */
   .travel-booking {
     position: static;
     width: 100%;
+    flex: 1;
     margin-top: 1rem;
+  }
+
+  /* Reorder elements within travel-content */
+  .travel-content {
+    display: contents;
+  }
+
+  .travel-image {
+    order: 1;
+  }
+
+  .travel-info {
     order: 2;
+  }
+
+  .travel-description {
+    order: 3;
+  }
+
+  .travel-booking {
+    order: 4;
   }
 
   .travel-reviews {
-    order: 3;
+    order: 5;
     margin-top: 1rem;
-  }
-
-  /* Reorder: description, booking, reviews */
-  .travel-content {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .travel-info {
-    order: 1;
-  }
-  
-  .travel-description {
-    order: 2;
   }
 }
 
@@ -370,14 +459,14 @@ section {
     margin: 0 auto;
     width: 95%;
   }
-    .travel-image {
+  .travel-image {
     width: 100%;
     height: 350px;
     object-fit: cover;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    margin-top: 5rem;
-}
+    margin-top: 3rem;
+  }
 }
 
 @media (max-width: 820px) {
@@ -385,14 +474,14 @@ section {
     margin: 0 auto;
     width: 90%;
   }
-    .travel-image {
+  .travel-image {
     width: 100%;
-    height: 450px;
+    height: 350px;
     object-fit: cover;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    margin-top: 5rem;
-}
+    margin-top: 3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -405,14 +494,14 @@ section {
   .home-title {
     font-size: 3rem;
   }
-    .travel-image {
+  .travel-image {
     width: 100%;
-    height: 450px;
+    height: 350px;
     object-fit: cover;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     margin-top: 3rem;
-}
+  }
 }
 
 @media (max-width: 570px) {
@@ -428,5 +517,5 @@ section {
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     margin-top: 3rem;
-}
+  }
 }
