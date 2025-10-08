@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/css/footer.css" />
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <title>TangoToursSL</title>
+    <title>CUToursSL</title>
   </head>
   <body>
     <div id="navbar-placeholder"></div>
@@ -33,7 +33,7 @@
 
     <section class="section__container banner__container">
       <h2>
-        TangoToursSL is the ultimate platform for discovering and exploring the best travel destinations. We aim to connect travelers with popular and nearby tourist spots.
+        CUToursSL is the ultimate platform for discovering and exploring the best travel destinations. We aim to connect travelers with popular and nearby tourist spots.
       </h2>
     </section>
    <section class="section__container music__container">
@@ -97,21 +97,21 @@
             if (id === 'hero-placeholder') {
               const videos = document.querySelectorAll('.media-video');
               videos.forEach(video => {
-                video.loop = true; // Enable native looping
+                video.loop = true;
                 video.addEventListener('loadeddata', () => {
-                  video.playbackRate = 0.6; // Set playback rate after video is ready
-                  video.play(); // Start playback
+                  video.playbackRate = 0.6;
+                  video.play();
                 });
                 video.addEventListener('timeupdate', () => {
                   const duration = video.duration;
                   if (duration && video.currentTime >= duration - 2) {
-                    video.currentTime = 0.1; // Reset to a slight offset to avoid immediate replay glitch
-                    video.play(); // Restart playback smoothly
+                    video.currentTime = 0.1;
+                    video.play();
                   }
                 });
               });
 
-              // Initialize WhatsApp inquiry functionality
+              
               const inquireBtn = document.querySelector('.inquire-btn');
               const formFields = document.querySelectorAll('.inquiry-form input, .inquiry-form textarea');
 
