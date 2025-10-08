@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
+:root {
+  --cu-orange: #FF8C00;
+  --car-blue: #4A90E2;
+  --white: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +16,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* ================= FOOTER SECTION ================= */
 .footer {
   background: #1a1a1a;
   color: #fff;
@@ -67,15 +72,25 @@ body {
 }
 
 .logo__travel {
-  color: #fff;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
 .logo__cu {
-  color: #FF8C00;
+  color: var(--cu-orange);
+}
+
+.logo__sl {
+  background: linear-gradient(90deg, #ffbe33 0%, #138808 50%, #f56f02 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .logo__icon {
-  color: #4A90E2;
+  color: var(--car-blue);
   font-size: 2rem;
   font-weight: normal;
   display: flex;
@@ -184,7 +199,6 @@ body {
   border-top: 1px solid #2a2a2a;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
   .footer__container {
     grid-template-columns: 1fr 1fr;
