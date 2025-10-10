@@ -103,6 +103,7 @@
                 video.loop = true;
                 video.addEventListener('loadeddata', () => {
                   video.playbackRate = 0.6;
+                  video.play().catch(() => {});
                   video.play();
                 });
                 video.addEventListener('timeupdate', () => {
