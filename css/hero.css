@@ -198,6 +198,7 @@
   object-position: center;
   display: block;
   border-radius: 20px;
+  z-index: 1;
 }
 
 .explore-btn {
