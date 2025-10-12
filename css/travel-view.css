@@ -45,7 +45,7 @@ section {
   margin: 0 auto;
   gap: 2rem;
   background: #fff;
-  margin-top: 60px; /* Adjusted for reduced navbar height (~48px mobile, ~60px desktop) */
+  margin-top: 60px;
 }
 
 .travel-content {
@@ -145,7 +145,8 @@ section {
 .travel-reviews .rating-stars {
   color: #fd8f44;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
 .travel-reviews .review-form {
@@ -218,11 +219,50 @@ section {
   background: #e07b33;
 }
 
+/* Reviews List Container with Scroll */
+.reviews-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for reviews list */
+.reviews-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reviews-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.reviews-list-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.reviews-list-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox scrollbar */
+.reviews-list-container {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
 .travel-reviews .review-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 0.5rem;
-  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.travel-reviews .review-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .travel-reviews .review-avatar {
@@ -232,10 +272,12 @@ section {
   margin-right: 1rem;
   object-fit: cover;
   margin-top: 0.25rem;
+  flex-shrink: 0;
 }
 
 .travel-reviews .review-details {
   flex: 1;
+  min-width: 0;
 }
 
 .travel-reviews .review-author {
@@ -245,23 +287,29 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .travel-reviews .review-rating {
   margin-left: 1rem;
   font-size: 0.9rem;
   color: #666;
+  white-space: nowrap;
 }
 
 .travel-reviews .review-date {
   font-size: 0.75rem;
   color: #666;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .travel-reviews .review-comment {
   margin-bottom: 0.5rem;
   color: #444;
+  line-height: 1.5;
+  word-wrap: break-word;
 }
 
 .travel-booking {
@@ -302,16 +350,80 @@ section {
   background: #fff;
 }
 
-.travel-booking .date-input input[type="date"] {
-  padding: 0.4rem;
+/* Date Input Wrapper with Calendar Icon */
+.date-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.date-input-wrapper input[type="date"] {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  background: #fff;
   font-size: 0.9rem;
   cursor: pointer;
 }
 
-.travel-booking .date-input input[type="date"]::-webkit-calendar-picker-indicator {
+/* Hide default calendar icon but keep it functional */
+.date-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-  filter: invert(1);
-  display: block;
+  z-index: 2;
+}
+
+/* Custom calendar icon */
+.date-input-wrapper .calendar-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666;
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+/* Make entire date field clickable */
+.date-input-wrapper input[type="date"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.date-input-wrapper input[type="date"]:hover {
+  border-color: #999;
+}
+
+/* Fix date picker calendar border and appearance */
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+}
+
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit-text {
+  padding: 0 0.2em;
+}
+
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit-month-field,
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit-day-field,
+.date-input-wrapper input[type="date"]::-webkit-datetime-edit-year-field {
+  padding: 0 0.2em;
+}
+
+/* Improve calendar popup appearance (Chrome/Edge) */
+.date-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
 }
 
 .travel-booking .price {
@@ -402,6 +514,11 @@ section {
 
   .toast-notification.show {
     transform: translateY(0);
+  }
+  
+  /* Adjust reviews list height on mobile */
+  .reviews-list-container {
+    max-height: 350px;
   }
 }
 
@@ -499,8 +616,18 @@ section {
     height: 350px;
     object-fit: cover;
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    margin-top: 3rem;
+    margin-bottom: -1rem;
+    margin-top: 2rem;
+  }
+  .travel-info {
+    padding: 1rem;
+    border: 2px solid #007bff;
+    border-radius: 0.5rem;
+    margin-bottom: -2rem;
+    background: #fff;
+  }
+  .travel-booking {
+    margin-bottom: -2rem;
   }
 }
 
@@ -515,7 +642,33 @@ section {
     height: 350px;
     object-fit: cover;
     border-radius: 0.5rem;
+    margin-bottom: -1rem;
+    margin-top: 2rem;
+  }
+  .travel-info {
+    padding: 1rem;
+    border: 2px solid #007bff;
+    border-radius: 0.5rem;
+    margin-bottom: -2rem;
+    background: #fff;
+  }
+  .travel-booking {
+    margin-bottom: -2rem;
+  }
+
+  /* Stack rating section and submit button vertically on mobile */
+  .travel-reviews .review-form .rating-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .travel-reviews .review-form .rating-section {
     margin-bottom: 1rem;
-    margin-top: 3rem;
+  }
+
+  .travel-reviews .review-form .submit-review {
+    width: 100%; /* Ensure button takes full width on mobile */
+    padding: 0.75rem;
   }
 }
