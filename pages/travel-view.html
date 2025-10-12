@@ -42,7 +42,7 @@
             <button class="book-btn submit-review">Publish</button>
           </div>
         </div>
-        <div id="reviews-list">
+        <div id="reviews-list" class="reviews-list-container">
           <!-- Reviews will be dynamically added here -->
         </div>
       </div>
@@ -63,7 +63,10 @@
       </div>
       <div class="form-group date-input">
         <label>Date</label>
-        <input type="date" id="booking-date" name="booking-date">
+        <div class="date-input-wrapper">
+          <input type="date" id="booking-date" name="booking-date">
+          <i class="ri-calendar-line calendar-icon"></i>
+        </div>
       </div>
       <div class="form-group">
         <label>Guest Group Size</label>
@@ -113,9 +116,25 @@
     }
   </script>
 
-  <script src="/js/destination.js"></script>
+  <!-- Load EmailJS library -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Load review scripts AFTER EmailJS -->
+  <script src="/js/reviewsData.js"></script>
   <script src="/js/reviews.js"></script>
+
   <script>
+    // Define postsData inline to match featuredPostsData
+    const postsData = [
+      { img: '/assets/nature/blebeach.jpg', title: 'Yala National Park', location: 'Monaragala', price: '20', description: 'Experience wildlife safari in one of Sri Lanka\'s most famous national parks.' },
+      { img: '/assets/beachs/goyambokka2.jpg', title: 'Arugam Bay', location: 'Tangalle', price: '99', description: 'World-renowned surfing destination with pristine beaches and laid-back vibes.' },
+      { img: '/assets/nature/tangallelagoon3.jpg', title: 'Whale Watching', location: 'Mirissa', price: '220', description: 'Witness majestic blue whales and dolphins in their natural habitat.' },
+      { img: '/assets/popular/lighthouse.jpg', title: 'Udawalawe National Park', location: 'Udawalawe', price: '80', description: 'Home to large herds of elephants and diverse bird species.' },
+      { img: '/assets/popular/tea.jpg', title: 'Ella Rock Hike', location: 'Ella', price: '30', description: 'Challenging trek with breathtaking views of tea plantations and valleys.' },
+      { img: '/assets/popular/anu.jpg', title: 'Ancient Stupa Visit', location: 'Anuradhapura', price: '15', description: 'Explore ancient Buddhist stupas and sacred sites dating back centuries.' },
+      { img: '/assets/popular/mat.jpg', title: 'Sigiriya Frescoes', location: 'Sigiriya', price: '25', description: 'Ancient rock fortress with stunning frescoes and panoramic views.' }
+    ];
+
     // Function to load navbar and footer
     function loadComponent(id, file) {
       fetch(file)
@@ -148,6 +167,16 @@
     loadComponent('navbar-placeholder', '/components/navbar.html');
     loadComponent('footer-placeholder', '/components/footer.html');
 
+    // Function to get today's date in Sri Lanka timezone
+    function getTodayInSriLanka() {
+      const now = new Date();
+      const sriLankaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
+      const year = sriLankaTime.getFullYear();
+      const month = String(sriLankaTime.getMonth() + 1).padStart(2, '0');
+      const day = String(sriLankaTime.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const title = decodeURIComponent(urlParams.get('title'));
@@ -157,18 +186,31 @@
         document.getElementById('travel-image').src = post.img;
         document.getElementById('travel-title').textContent = post.title;
         document.getElementById('travel-location').textContent = post.location;
-        document.getElementById('travel-description').textContent = post.description;
+        document.getElementById('travel-description').textContent = post.description || 'No description available.';
         document.getElementById('booking-location').value = post.location;
         document.getElementById('total-price').textContent = '$' + post.price;
+        console.log('Post loaded:', post.title);
       } else {
         console.error('Post not found for title:', title);
       }
 
-      // Set default date to today
-      const today = new Date('2025-10-09T02:17:00+0530').toISOString().split('T')[0];
+      // Set date to today dynamically (Sri Lanka timezone)
+      const today = getTodayInSriLanka();
       document.getElementById('booking-date').value = today;
+      
+      // Set minimum date to today (prevent past dates)
+      document.getElementById('booking-date').setAttribute('min', today);
+
+      // Initialize reviews after post details are set
+      console.log('Calling initializeReviews...');
+      if (typeof initializeReviews === 'function') {
+        initializeReviews();
+      } else {
+        console.error('initializeReviews function not found!');
+      }
     });
   </script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="/js/navbar-autohide.js"></script>
 </body>
