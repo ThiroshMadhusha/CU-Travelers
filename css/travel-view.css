@@ -350,6 +350,11 @@ section {
   background: #fff;
 }
 
+/* Set cursor to not-allowed for disabled booking-location */
+.travel-booking input#booking-location:disabled {
+  cursor: not-allowed;
+}
+
 /* Date Input Wrapper with Calendar Icon */
 .date-input-wrapper {
   position: relative;
