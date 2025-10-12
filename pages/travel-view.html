@@ -81,6 +81,59 @@
   <div id="footer-placeholder"></div>
 
   <script type="text/javascript">
+    // Synchronized postsData to match featuredPostsData
+    const postsData = [
+      {
+        img: '/assets/popular/yala.jpg',
+        title: 'Yala National Park',
+        location: 'Monaragala',
+        price: '30',
+        description: 'Missing Yala National Park while Sri Lanka sightseeing might bring regret to wildlife lovers. It is home to a host of wildlife and birds you are bound to run into a group of elephants bathing in streams, tossing their trunks wildly or leopards nestling lazily on tree branches.'
+      },
+      {
+        img: '/assets/popular/bridge1.jpg',
+        title: 'Ella Tour',
+        location: 'Ella',
+        price: '100',
+        description: 'Nine Arch Bridge is also called the Bridge in the sky and is among the iconic Sri Lanka tourism places. It is in the small mountain town of Ella and offers visitors with splendid view of the surrounding area which comprises of lush greenery and tea fields.'
+      },
+      {
+        img: '/assets/popular/udawalawa.jpg',
+        title: 'Udawalawe National Park',
+        location: 'Udawalawe',
+        price: '80',
+        description: 'Udawalawe National Park is a must-visit place for wildlife lovers. It is one of those few places where elephant sightings are quite frequent.'
+      },
+      {
+        img: '/assets/popular/aru.jpg',
+        title: 'Arugam Bay Beach',
+        location: 'Pottuvil',
+        price: '99',
+        description: 'Sri Lanka has a coastline of over 1600 km and is ideally suited for windsurfing, speed boating, and other water sports. Arugam Bay has azure skies and slanting coconut trees.'
+      },
+      {
+        img: '/assets/popular/whales.jpg',
+        title: 'Whale Watching',
+        location: 'Mirissa',
+        price: '220',
+        description: 'The three main whale and dolphin watching areas in Sri Lanka are Mirissa in the south-west, Trincomalee in the north-east. The most frequently targeted species of whale for whale watching in Sri Lanka is the blue whale.'
+      },
+      {
+        img: '/assets/popular/polonnaruwa.jpg',
+        title: 'Ancient City Visit',
+        location: 'Polonnaruwa',
+        price: '15',
+        description: 'This is one of the top Sri Lanka tourist spots which is also claimed to be one of the world heritage sites.'
+      },
+      {
+        img: '/assets/popular/gallfort.jpg',
+        title: 'Galle Fort',
+        location: 'Galle',
+        price: '25',
+        description: 'Sigiriya or the mount of remembrance is a World Heritage Site and one of the most stunning places to see in Sri Lanka.'
+      }
+    ];
+
     var gk_isXlsx = false;
     var gk_xlsxFileLookup = {};
     var gk_fileData = {};
@@ -93,17 +146,14 @@
           var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
           var firstSheetName = workbook.SheetNames[0];
           var worksheet = workbook.Sheets[firstSheetName];
-
           var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
           var filteredData = jsonData.filter(row => row.some(filledCell));
-
           var headerRowIndex = filteredData.findIndex((row, index) =>
             row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
           );
           if (headerRowIndex === -1 || headerRowIndex > 25) {
             headerRowIndex = 0;
           }
-
           var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
           csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
           return csv;
@@ -114,162 +164,142 @@
       }
       return gk_fileData[filename] || "";
     }
+
+    // Function to load navbar and footer
+    function loadComponent(id, file) {
+      fetch(file)
+        .then(response => {
+          if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+          console.log(`Component ${id} loaded from ${file}`);
+          if (id === 'navbar-placeholder') {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+            const menuBtnIcon = menuBtn.querySelector("i");
+            menuBtn.addEventListener("click", () => {
+              navLinks.classList.toggle("open");
+              const isOpen = navLinks.classList.contains("open");
+              menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+            });
+            navLinks.addEventListener("click", () => {
+              navLinks.classList.remove("open");
+              menuBtnIcon.setAttribute("class", "ri-menu-line");
+            });
+          }
+        })
+        .catch(error => console.error('Error loading component:', error));
+    }
+
+    // Load navbar and footer
+    loadComponent('navbar-placeholder', '/components/navbar.html');
+    loadComponent('footer-placeholder', '/components/footer.html');
+
+    // Function to get today's date in Sri Lanka timezone
+    function getTodayInSriLanka() {
+      const now = new Date();
+      // Adjust for Sri Lanka timezone (+05:30)
+      const offsetMs = 5.5 * 60 * 60 * 1000; // 5 hours 30 minutes in milliseconds
+      const sriLankaTime = new Date(now.getTime() + offsetMs);
+      const year = sriLankaTime.getUTCFullYear();
+      const month = String(sriLankaTime.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(sriLankaTime.getUTCDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Function to show toast notification
+    function showToast(message, type = 'error') {
+      const toast = document.createElement('div');
+      toast.className = `toast-notification ${type}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      // Show the toast
+      setTimeout(() => toast.classList.add('show'), 100);
+      // Hide and remove the toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300); // Match the CSS transition duration
+      }, 3000);
+    }
+
+    // Function to send WhatsApp message
+    function sendWhatsAppMessage() {
+      const title = document.getElementById('travel-title').textContent;
+      const location = document.getElementById('travel-location').textContent;
+      const guestName = document.getElementById('booking-guest-name').value;
+      const whatsappNumber = document.getElementById('booking-whatsapp-number').value;
+      const bookingDate = document.getElementById('booking-date').value;
+      const groupSize = document.getElementById('booking-group-size').value;
+      const totalPrice = document.getElementById('total-price').textContent;
+
+      // Validate required fields with toast notifications
+      if (!whatsappNumber) {
+        showToast('Please enter your WhatsApp number.', 'error');
+        return;
+      }
+      if (!guestName) {
+        showToast('Please enter your name.', 'error');
+        return;
+      }
+      if (!bookingDate) {
+        showToast('Please select a tour date.', 'error');
+        return;
+      }
+
+      // Format the message
+      const message = `Booking Request:\n\nTour: ${title}\nLocation: ${location}\nGuest Name: ${guestName}\nWhatsApp Number: ${whatsappNumber}\nDate: ${bookingDate}\nGroup Size: ${groupSize}\nTotal Price: ${totalPrice}\n\nPlease confirm my booking.`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/94773467723?text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank');
+      showToast('Booking request sent successfully!', 'toast-success');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const title = decodeURIComponent(urlParams.get('title'));
+      const post = postsData.find(p => p.title === title);
+      if (post) {
+        document.getElementById('travel-image').src = post.img;
+        document.getElementById('travel-title').textContent = post.title;
+        document.getElementById('travel-location').textContent = post.location;
+        document.getElementById('travel-description').textContent = post.description || 'No description available.';
+        document.getElementById('booking-location').value = post.title;
+        document.getElementById('total-price').textContent = '$' + post.price;
+        console.log('Post loaded:', post.title);
+      } else {
+        console.error('Post not found for title:', title);
+        showToast('Tour not found. Please select a valid tour.', 'error');
+        // Redirect to homepage after 3 seconds
+        setTimeout(() => {
+          window.location.href = '/index.html';
+        }, 3000);
+      }
+
+      // Set date to today dynamically (Sri Lanka timezone)
+      const today = getTodayInSriLanka();
+      document.getElementById('booking-date').value = today;
+      document.getElementById('booking-date').setAttribute('min', today);
+
+      // Initialize reviews after post details are set
+      console.log('Calling initializeReviews...');
+      if (typeof initializeReviews === 'function') {
+        initializeReviews();
+      } else {
+        console.error('initializeReviews function not found!');
+      }
+
+      // Add event listener to WhatsApp button
+      document.getElementById('whatsapp-book-btn').addEventListener('click', sendWhatsAppMessage);
+    });
   </script>
 
   <!-- Load EmailJS library -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
   <!-- Load review scripts AFTER EmailJS -->
   <script src="/js/reviewsData.js"></script>
   <script src="/js/reviews.js"></script>
-
-<script>
-  // Define postsData inline to match featuredPostsData
-  const postsData = [
-    { img: '/assets/nature/blebeach.jpg', title: 'Yala National Park', location: 'Monaragala', price: '20', description: 'Experience wildlife safari in one of Sri Lanka\'s most famous national parks.' },
-    { img: '/assets/beachs/goyambokka2.jpg', title: 'Arugam Bay', location: 'Tangalle', price: '99', description: 'World-renowned surfing destination with pristine beaches and laid-back vibes.' },
-    { img: '/assets/nature/tangallelagoon3.jpg', title: 'Whale Watching', location: 'Mirissa', price: '220', description: 'Witness majestic blue whales and dolphins in their natural habitat.' },
-    { img: '/assets/popular/lighthouse.jpg', title: 'Udawalawe National Park', location: 'Udawalawa', price: '80', description: 'Home to large herds of elephants and diverse bird species.' },
-    { img: '/assets/popular/tea.jpg', title: 'Sri Padaya(Adam\'s Peak)', location: 'Rathnapura', price: '33', description: 'Challenging trek with breathtaking views of tea plantations and valleys.' },
-    { img: '/assets/popular/anu.jpg', title: 'Greatest City Of Ancient World', location: 'Anuradhapura', price: '19', description: 'Explore ancient Buddhist stupas and sacred sites dating back centuries.' },
-    { img: '/assets/popular/mat.jpg', title: 'Sigiriya Ancient Rock', location: 'Mathale', price: '15', description: 'Ancient rock fortress with stunning frescoes and panoramic views.' }
-  ];
-
-  // Function to load navbar and footer
-  function loadComponent(id, file) {
-    fetch(file)
-      .then(response => {
-        if (!response.ok) throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById(id).innerHTML = data;
-        console.log(`Component ${id} loaded from ${file}`);
-        if (id === 'navbar-placeholder') {
-          const menuBtn = document.getElementById("menu-btn");
-          const navLinks = document.getElementById("nav-links");
-          const menuBtnIcon = menuBtn.querySelector("i");
-          menuBtn.addEventListener("click", () => {
-            navLinks.classList.toggle("open");
-            const isOpen = navLinks.classList.contains("open");
-            menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
-          });
-          navLinks.addEventListener("click", () => {
-            navLinks.classList.remove("open");
-            menuBtnIcon.setAttribute("class", "ri-menu-line");
-          });
-        }
-      })
-      .catch(error => console.error('Error loading component:', error));
-  }
-
-  // Load navbar and footer
-  loadComponent('navbar-placeholder', '/components/navbar.html');
-  loadComponent('footer-placeholder', '/components/footer.html');
-
-  // Function to get today's date in Sri Lanka timezone
-  function getTodayInSriLanka() {
-    const now = new Date('2025-10-12T17:26:00+05:30'); // Set to current date and time: 05:26 PM +0530, October 12, 2025
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
-  // Function to show toast notification
-  function showToast(message, type = 'error') {
-    const toast = document.createElement('div');
-    toast.className = `toast-notification ${type}`;
-    toast.textContent = message;
-    document.body.appendChild(toast);
-
-    // Show the toast
-    setTimeout(() => toast.classList.add('show'), 100);
-
-    // Hide and remove the toast after 3 seconds
-    setTimeout(() => {
-      toast.classList.remove('show');
-      setTimeout(() => toast.remove(), 300); // Match the CSS transition duration
-    }, 3000);
-  }
-
-  // Function to send WhatsApp message
-  function sendWhatsAppMessage() {
-    const title = document.getElementById('travel-title').textContent;
-    const location = document.getElementById('travel-location').textContent; // Use actual location
-    const guestName = document.getElementById('booking-guest-name').value;
-    const whatsappNumber = document.getElementById('booking-whatsapp-number').value;
-    const bookingDate = document.getElementById('booking-date').value;
-    const groupSize = document.getElementById('booking-group-size').value;
-    const totalPrice = document.getElementById('total-price').textContent;
-
-    // Validate required fields with toast notifications
-    if (!whatsappNumber) {
-      showToast('Please enter your WhatsApp number.', 'error');
-      return;
-    }
-    if (!guestName) {
-      showToast('Please enter your name.', 'error');
-      return;
-    }
-    if (!bookingDate) {
-      showToast('Please select a tour date.', 'error');
-      return;
-    }
-
-    // Format the message to match the example with actual location
-    const message = `Booking Request:\n\nTour: ${title}\nLocation: ${location}\nGuest Name: ${guestName}\nWhatsApp Number: ${whatsappNumber}\nDate: ${bookingDate}\nGroup Size: ${groupSize}\nTotal Price: ${totalPrice}\n\nPlease confirm my booking.`;
-
-    // Encode the message for URL
-    const encodedMessage = encodeURIComponent(message);
-
-    // WhatsApp URL (replace with your WhatsApp business number if needed)
-    const whatsappURL = `https://wa.me/94773467723?text=${encodedMessage}`;
-
-    // Open WhatsApp in a new tab
-    window.open(whatsappURL, '_blank');
-
-    // Show success toast
-    showToast('Booking request sent successfully!', 'toast-success');
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const title = decodeURIComponent(urlParams.get('title'));
-
-    const post = postsData.find(p => p.title === title);
-    if (post) {
-      document.getElementById('travel-image').src = post.img;
-      document.getElementById('travel-title').textContent = post.title;
-      document.getElementById('travel-location').textContent = post.location;
-      document.getElementById('travel-description').textContent = post.description || 'No description available.';
-      document.getElementById('booking-location').value = post.title; // Use title for Tour
-      document.getElementById('total-price').textContent = '$' + post.price;
-      console.log('Post loaded:', post.title);
-    } else {
-      console.error('Post not found for title:', title);
-    }
-
-    // Set date to today dynamically (Sri Lanka timezone)
-    const today = getTodayInSriLanka();
-    document.getElementById('booking-date').value = today;
-    
-    // Set minimum date to today (prevent past dates)
-    document.getElementById('booking-date').setAttribute('min', today);
-
-    // Initialize reviews after post details are set
-    console.log('Calling initializeReviews...');
-    if (typeof initializeReviews === 'function') {
-      initializeReviews();
-    } else {
-      console.error('initializeReviews function not found!');
-    }
-
-    // Add event listener to WhatsApp button
-    document.getElementById('whatsapp-book-btn').addEventListener('click', sendWhatsAppMessage);
-  });
-</script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="/js/navbar-autohide.js"></script>
 </body>
