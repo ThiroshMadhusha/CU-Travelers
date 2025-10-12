@@ -68,7 +68,7 @@
 
 .location {
   font-size: 0.8rem;
-  color: #1e90ff;
+  color: #000000;
   margin-left: 5px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -101,7 +101,7 @@
 .post-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #172317;
+  color: #0670da;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -129,17 +129,6 @@
 
 .book-btn:hover {
   background: #e07b33;
-}
-
-.tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #0cec71;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 0.8rem;
 }
 
 /* See More Card Styles */
