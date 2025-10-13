@@ -53,42 +53,38 @@
   line-height: 1.6;
 }
 
-/* Desktop Hover Effect - ONLY on Desktop */
-@media (hover: hover) and (min-width: 769px) {
-  .offer-card:hover {
-    background: #01bda4;
-  }
-
-  .offer-card:hover span {
-    color: #fff;
-  }
-
-  .offer-card:hover h3 {
-    color: #fff;
-  }
-
-  .offer-card:hover p {
-    color: #fff;
-  }
+/* Desktop Hover Effect */
+.offer-card:hover {
+  background: #01bda4;
 }
 
-/* Mobile Active State - ONLY on Mobile */
-@media (max-width: 768px) {
-  .offer-card.active {
-    background: #01bda4;
-  }
+.offer-card:hover span {
+  color: #fff;
+}
 
-  .offer-card.active span {
-    color: #fff;
-  }
+.offer-card:hover h3 {
+  color: #fff;
+}
 
-  .offer-card.active h3 {
-    color: #fff;
-  }
+.offer-card:hover p {
+  color: #fff;
+}
 
-  .offer-card.active p {
-    color: #fff;
-  }
+/* Mobile Active State - Using .active class */
+.offer-card.active {
+  background: #01bda4;
+}
+
+.offer-card.active span {
+  color: #fff;
+}
+
+.offer-card.active h3 {
+  color: #fff;
+}
+
+.offer-card.active p {
+  color: #fff;
 }
 
 /* ================= RESPONSIVE ================= */
