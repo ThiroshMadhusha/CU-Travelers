@@ -130,7 +130,7 @@ nav {
 
 .nav__links {
   position: absolute;
-  top: 60px; /* Increased from 48px to match new header padding */
+  top: 50px; /* Increased from 48px to match new header padding */
   left: 0;
   width: 100%;
   padding: 1rem;
@@ -169,7 +169,7 @@ nav {
 @media (max-width: 768px) {
   .nav__links {
     gap: 1rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 2rem;
   }
 
   .nav__links .mobile-btn {
