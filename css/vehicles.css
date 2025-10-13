@@ -179,4 +179,7 @@
   .vehicle-image {
     height: 180px;
   }
+  .experience-title {
+    padding: 0.6rem 1.2rem;
+  }
 }
