@@ -53,18 +53,40 @@
   line-height: 1.6;
 }
 
-/* Hover Effect */
-.offer-card:hover {
+/* Desktop Hover Effect */
+@media (hover: hover) {
+  .offer-card:hover {
+    background: #01bda4;
+  }
+
+  .offer-card:hover span {
+    color: #fff;
+  }
+
+  .offer-card:hover h3 {
+    color: #fff;
+  }
+
+  .offer-card:hover p {
+    color: #fff;
+  }
+}
+
+/* Mobile Active State - Only One Card at a Time */
+.offer-card.active {
   background: #01bda4;
 }
 
-.offer-card:hover span {
+.offer-card.active span {
   color: #fff;
 }
 
-/* Remove transform hover effect to avoid conflict */
-.offer-card:hover {
-  transform: none;
+.offer-card.active h3 {
+  color: #fff;
+}
+
+.offer-card.active p {
+  color: #fff;
 }
 
 /* ================= RESPONSIVE ================= */
