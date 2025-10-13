@@ -146,7 +146,7 @@
 
   .experience-title {
     font-size: 0.8rem;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     margin: 0 0 0.5rem 0;
     justify-content: flex-start;
   }
@@ -176,7 +176,7 @@
 
   .experience-title {
     font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.6rem 1.2rem;
     margin: 0 0 0.5rem 0;
   }
 
@@ -222,5 +222,8 @@
 
   .experience-stats {
     gap: 1rem;
+  }
+  .experience-title {
+    padding: 0.6rem 1.2rem;
   }
 }
