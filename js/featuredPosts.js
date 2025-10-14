@@ -1,4 +1,40 @@
 const featuredPostsData = [
+
+  {
+    img: '/assets/popular/airport.jpg',
+    title: 'Airport Shuttle Services',
+    location: 'Colombo',
+    price: '120',
+    priceUnit: '/per pickup or drop',
+    description: 'Sri Lanka has a coastline of over 1600 km and is ideally suited for windsurfing, speed boating, and other water sports. Arugam Bay has azure skies and slanting coconut trees. If you are looking to surf in turquoise waters, Arugam Bay must be in your list of must-see tourist places in Sri Lanka.',
+    distance: '400 k/m',
+    maxGroupSize: 7,
+    address: 'add location'
+  },
+  {
+    img: '/assets/popular/bridge1.jpg',
+    title: 'Ella One Day Tour',
+    location: 'Ella',
+    price: '100',
+    priceUnit: '/per tour',
+    description: 'Nine Arch Bridge is also called the Bridge in the sky and is among the iconic Sri Lanka tourism places. It is in the small mountain town of Ella and offers visitors with splendid view of the surrounding area which comprises of lush greenery and tea fields. What makes the bridge unique is that it is made up of stone, brick and cement. There is no use of any steel. It is one of the best places to visit in Sri Lanka for a memorable holiday.',
+    distance: '300 k/m',
+    maxGroupSize: 7,
+    address: 'add location'
+  },
+  {
+    img: '/assets/popular/gallfort.jpg',
+    title: 'Galle City Tour',
+    location: 'Galle',
+    price: '25',
+    priceUnit: '/per tour',
+    category: 'nature',
+    description: 'Sigiriya or the mount of remembrance is a World Heritage Site and one of the most stunning places to see in Sri Lanka. This giant formation of rock rises out of nowhere towering over everything in its vicinity. It is quite a climb to the top but once up there you will get to see a panoramic view of the nearby sights and the Sigiriya fort. The rock fortress is a slice of history perched on a rock and is really worth a visit.',
+    distance: '300 k/m',
+    maxGroupSize: 7,
+    address: 'add location'
+  },
+
   {
     img: '/assets/popular/yala.jpg',
     title: 'Yala National Park Saffari',
@@ -11,19 +47,8 @@ const featuredPostsData = [
     address: 'add location'
   },
   {
-    img: '/assets/popular/bridge1.jpg',
-    title: 'Ella Tour',
-    location: 'Ella',
-    price: '100',
-    priceUnit: '/per tour',
-    description: 'Nine Arch Bridge is also called the Bridge in the sky and is among the iconic Sri Lanka tourism places. It is in the small mountain town of Ella and offers visitors with splendid view of the surrounding area which comprises of lush greenery and tea fields. What makes the bridge unique is that it is made up of stone, brick and cement. There is no use of any steel. It is one of the best places to visit in Sri Lanka for a memorable holiday.',
-    distance: '300 k/m',
-    maxGroupSize: 7,
-    address: 'add location'
-  },
-  {
     img: '/assets/popular/udawalawa.jpg',
-    title: 'Udawalawe Park Saffari',
+    title: 'Udawalawe Saffari',
     location: 'Udawalawe',
     price: '80',
     priceUnit: '/per tour',
@@ -54,29 +79,7 @@ const featuredPostsData = [
     maxGroupSize: 7,
     address: 'add location'
   },
-  {
-    img: '/assets/popular/gallfort.jpg',
-    title: 'Galle City Tour',
-    location: 'Galle',
-    price: '25',
-    priceUnit: '/per tour',
-    category: 'nature',
-    description: 'Sigiriya or the mount of remembrance is a World Heritage Site and one of the most stunning places to see in Sri Lanka. This giant formation of rock rises out of nowhere towering over everything in its vicinity. It is quite a climb to the top but once up there you will get to see a panoramic view of the nearby sights and the Sigiriya fort. The rock fortress is a slice of history perched on a rock and is really worth a visit.',
-    distance: '300 k/m',
-    maxGroupSize: 7,
-    address: 'add location'
-  },
-  {
-    img: '/assets/popular/airport.jpg',
-    title: 'Airport Shuttle Services',
-    location: 'Colombo',
-    price: '120',
-    priceUnit: '/per pickup or drop',
-    description: 'Sri Lanka has a coastline of over 1600 km and is ideally suited for windsurfing, speed boating, and other water sports. Arugam Bay has azure skies and slanting coconut trees. If you are looking to surf in turquoise waters, Arugam Bay must be in your list of must-see tourist places in Sri Lanka.',
-    distance: '400 k/m',
-    maxGroupSize: 7,
-    address: 'add location'
-  },
+
 ];
 
 function initFeaturedPosts() {
