@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/css/vehicles.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/googlereviews.css" />
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>CUToursSL</title>
@@ -31,6 +32,7 @@
     <div id="featured-placeholder"></div>
     <!-- <div id="testimonials-placeholder"></div> -->
     <div id="vehicles-placeholder"></div>
+    <div id="reviews-placeholder"></div>
 
     <section class="section__container banner__container">
       <h2>
@@ -70,6 +72,7 @@
     <script src="/js/testimonials.js"></script>
     <script src="/js/vehicles.js"></script>
     <script src="/js/featuredPosts.js"></script>
+    <script src="/js/googlereviews.js"></script>
     <script>
       function loadComponent(id, file) {
         fetch(file)
@@ -140,6 +143,14 @@
                 console.error('initFeaturedPosts function not found');
               }
             }
+            if (id === 'reviews-placeholder') {
+              if (typeof initReviewsSlider === 'function') {
+                initReviewsSlider();
+                console.log('initReviewsSlider called');
+              } else {
+                console.error('initReviewsSlider function not found');
+              }
+            }
           })
           .catch(error => console.error('Error loading component:', error));
       }
@@ -152,6 +163,7 @@
       loadComponent('featured-placeholder', '/components/featured.html');
       loadComponent('testimonials-placeholder', '/components/testimonials.html');
       loadComponent('vehicles-placeholder', '/components/vehicles.html');
+      loadComponent('reviews-placeholder', '/components/googlereviews.html');
     </script>
     <script src="/js/scrollCenterHover.js"></script>
     <script src="/js/navbar-autohide.js"></script>
