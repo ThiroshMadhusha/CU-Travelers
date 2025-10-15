@@ -527,11 +527,13 @@ section {
   }
 }
 
-/* Mobile and Tablet: Image, Info, Description, Booking Form, Reviews */
+/* REPLACE the @media (max-width: 780px) section in your travel-view.css with this: */
+
 @media (max-width: 780px) {
   .travel-view {
     flex-direction: column;
     margin-top: 48px;
+    gap: 1rem; /* Add consistent gap between all sections */
   }
 
   .travel-content {
@@ -539,6 +541,7 @@ section {
     overflow-y: visible;
     border-right: none;
     padding-right: 0;
+    display: contents; /* Flatten children to control order at parent level */
   }
 
   /* Move travel-booking out of sidebar into main flow */
@@ -546,33 +549,38 @@ section {
     position: static;
     width: 100%;
     flex: 1;
-    margin-top: 1rem;
+    margin-top: 0; /* Remove margin, use gap instead */
+    margin-bottom: 0;
+    order: 50; /* Between gallery and reviews */
   }
 
-  /* Reorder elements within travel-content */
-  .travel-content {
-    display: contents;
-  }
-
+  /* Control order of all direct children of .travel-view */
   .travel-image {
     order: 1;
+    margin-bottom: 0; /* Remove margin, use gap instead */
   }
 
   .travel-info {
     order: 2;
+    margin-bottom: 0; /* Remove margin, use gap instead */
   }
-
-  .travel-description {
+  
+  .trip-details {
     order: 3;
+    margin-top: 0;
+    margin-bottom: 0; /* Remove margin, use gap instead */
   }
-
-  .travel-booking {
+  
+  .gallery {
     order: 4;
+    margin-top: 0;
+    margin-bottom: 0; /* Remove margin, use gap instead */
   }
 
   .travel-reviews {
-    order: 5;
-    margin-top: 1rem;
+    order: 100; /* Reviews come last */
+    margin-top: 0; /* Remove margin, use gap instead */
+    margin-bottom: 0;
   }
 }
 
