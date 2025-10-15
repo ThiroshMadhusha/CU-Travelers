@@ -138,7 +138,20 @@
 
 /* RESPONSIVE BREAKPOINTS */
 
-@media (max-width: 1024px) {
+@media (max-width: 1560px) {
+  .vehicle-card {
+    flex: 0 0 calc((100% - 1rem) / 3);
+  }
+  .vehicles__container {
+    width: 100%;
+    max-width: 100%;
+    padding: 4rem 2%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 1064px) {
   .vehicle-card {
     flex: 0 0 calc((100% - 1rem) / 2);
   }
