@@ -1,6 +1,8 @@
 .reviews__container {
-  padding: 4rem 1rem;
-  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  padding: 4rem 0;
+  background: linear-gradient(to bottom, #f2f3f5f3, #fffffff5);
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .reviews__header {
@@ -10,9 +12,10 @@
   gap: 2rem;
   flex-wrap: wrap;
   margin-bottom: 3rem;
-  max-width: 1400px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
 }
 
 .platform-rating-wrapper {
