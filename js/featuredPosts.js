@@ -6,32 +6,41 @@ const featuredPostsData = [
     location: 'Colombo',
     price: '120',
     priceUnit: '/per pickup or drop',
-    description: 'Sri Lanka has a coastline of over 1600 km and is ideally suited for windsurfing, speed boating, and other water sports. Arugam Bay has azure skies and slanting coconut trees. If you are looking to surf in turquoise waters, Arugam Bay must be in your list of must-see tourist places in Sri Lanka.',
+    description: 'Smooth and reliable transfers from or to the airport with CU Tours Sri Lanka. Enjoy comfortable, air-conditioned vehicles and friendly drivers ensuring timely pickups and drop-offs. Whether arriving or departing, travel stress-free with door-to-door service to hotels or destinations across Sri Lanka. Perfect for solo travelers, families, or groups seeking comfort, safety, and punctuality every time.',
     distance: '400 k/m',
     maxGroupSize: 7,
     address: 'add location',
     gallery: [
-      '/assets/popular/airport.jpg',
-      '/assets/logo.png',
-      '/assets/popular/airport.jpg',
-      '/assets/popular/airport.jpg',
-      '/assets/popular/airport.jpg',
-      '/assets/popular/airport.jpg'
+      '/assets/featured/airport1.jpg',
+      '/assets/featured/airport6.jpg',
+      '/assets/featured/airport2.jpg',
+      '/assets/featured/airport3.jpg',
+      '/assets/featured/airport5.jpg',
     ],
-    details: [
-      {
-        title: 'Tour Plan',
-        points: ['Pickup from airport', 'Transfer to hotel', 'Orientation session', 'Drop-off if needed']
-      },
-      {
-        title: 'What we Can View',
-        points: ['City skyline', 'Local markets', 'Beaches en route']
-      },
-      {
-        title: 'Best time to start',
-        points: ['Early morning for less traffic', 'Avoid peak hours']
-      }
+details: [
+  {
+    title: 'Pick Up',
+    points: [
+      'Meet at airport with name board',
+      'Direct hotel transfer'
     ]
+  },
+  {
+    title: 'Drop',
+    points: [
+      'On-time airport drop-off',
+      'Comfortable & Safe ride'
+    ]
+  },
+  {
+    title: 'Best time to start',
+    points: [
+      '3–4 hrs before flight',
+      'Avoid rush hours'
+    ]
+  }
+]
+
   },
   {
     img: '/assets/popular/bridge1.jpg',
@@ -39,26 +48,25 @@ const featuredPostsData = [
     location: 'Ella',
     price: '100',
     priceUnit: '/per tour',
-    description: 'Nine Arch Bridge is also called the Bridge in the sky and is among the iconic Sri Lanka tourism places. It is in the small mountain town of Ella and offers visitors with splendid view of the surrounding area which comprises of lush greenery and tea fields. What makes the bridge unique is that it is made up of stone, brick and cement. There is no use of any steel. It is one of the best places to visit in Sri Lanka for a memorable holiday.',
+    description: 'Experience the charm of Sri Lanka’s hill country in Ella. Home to lush tea plantations and misty mountains. Visit the iconic Nine Arch Bridge, Little Adam’s Peak, and the scenic Ravana Falls. Capture breathtaking photos, sip fresh Ceylon tea, and enjoy panoramic views of the valleys below. A perfect day trip blending nature, culture, and adventure.',
     distance: '300 k/m',
     maxGroupSize: 7,
     address: 'add location',
     gallery: [
-      '/assets/gallery/ella1.jpg',
-      '/assets/gallery/ella2.jpg',
-      '/assets/gallery/ella3.jpg',
-      '/assets/gallery/ella4.jpg',
-      '/assets/gallery/ella5.jpg',
-      '/assets/gallery/ella6.jpg'
+      '/assets/featured/ella1.jpg',
+      '/assets/featured/ella4.jpg',
+      '/assets/featured/ella2.jpg',
+      '/assets/featured/ella5.jpg',
+      '/assets/featured/ella6.jpg'
     ],
     details: [
       {
         title: 'Tour Plan',
-        points: ['Hike to Nine Arch Bridge', 'Visit tea plantations', 'Lunch at local cafe', 'Return via scenic route']
+        points: ['Hike to Nine Arch Bridge', 'Visit tea plantations', 'Little Adam Peak']
       },
       {
         title: 'What we Can View',
-        points: ['Iconic bridge', 'Tea fields', 'Mountains']
+        points: ['Iconic bridge', 'Tea fields', 'Ravana Falls']
       },
       {
         title: 'Best time to start',
@@ -73,22 +81,21 @@ const featuredPostsData = [
     price: '25',
     priceUnit: '/per tour',
     category: 'nature',
-    description: 'Sigiriya or the mount of remembrance is a World Heritage Site and one of the most stunning places to see in Sri Lanka. This giant formation of rock rises out of nowhere towering over everything in its vicinity. It is quite a climb to the top but once up there you will get to see a panoramic view of the nearby sights and the Sigiriya fort. The rock fortress is a slice of history perched on a rock and is really worth a visit.',
+    description: 'Discover the colonial beauty of Galle, a UNESCO World Heritage city on Sri Lanka’s southern coast. Explore the historic Galle Fort, Lighthouse, and charming cobblestone streets lined with boutiques and cafés. Visit Unawatuna Beach for a relaxing swim and enjoy local seafood by the ocean. A tour rich in history, culture, and coastal charm.',
     distance: '300 k/m',
     maxGroupSize: 7,
     address: 'add location',
     gallery: [
-      '/assets/gallery/galle1.jpg',
-      '/assets/gallery/galle2.jpg',
-      '/assets/gallery/galle3.jpg',
-      '/assets/gallery/galle4.jpg',
-      '/assets/gallery/galle5.jpg',
-      '/assets/gallery/galle6.jpg'
+      '/assets/featured/galle2.jpg',
+      '/assets/featured/galle1.jpg',
+      '/assets/featured/galle3.jpeg',
+      '/assets/featured/galle4.jpg',
+      '/assets/featured/galle5.jpg',
     ],
     details: [
       {
         title: 'Tour Plan',
-        points: ['Explore Galle Fort', 'Visit museums', 'Beach walk', 'Shopping for souvenirs']
+        points: ['Explore Galle Fort', 'Visit museums', 'Beach walk', 'Hadungoda Tea Plantation']
       },
       {
         title: 'What we Can View',
@@ -106,7 +113,7 @@ const featuredPostsData = [
     location: 'Monaragala',
     price: '30',
     priceUnit: '/per tour',
-    description: 'Missing Yala National Park while Sri Lanka sightseeing might bring regret to wildlife lovers. It is home to a host of wildlife and birds you are bound to run into a group of elephants bathing in streams, tossing their trunks wildly or leopards nestling lazily on tree branches. You could opt for the safari drives or a nature trail among the thick green foliage of the forest. Some tourists also camp at Yala and enjoy a barbeque under the stars. With so much to see and do here, Yala is indeed one of the best tourist places in Sri Lanka. Yala is the perfect place to try your hand at wildlife photography.',
+    description: 'Embark on an exciting wildlife safari in Yala National Park, home to leopards, elephants, crocodiles, and hundreds of bird species. Ride through dense jungles and open grasslands as expert drivers guide you to the best wildlife spots. Ideal for nature lovers and photographers, this tour promises thrilling encounters and unforgettable scenery.',
     distance: '400 k/m',
     maxGroupSize: 7,
     address: 'add location',
@@ -139,7 +146,7 @@ const featuredPostsData = [
     location: 'Udawalawe',
     price: '80',
     priceUnit: '/per tour',
-    description: 'Udawalawe National Park is a must-visit place for wildlife lovers. It is one of those few places where elephant sightings are quite frequent. Not only elephant, you get a chance to get a glimpse of many animals including peacocks, water buffalo, crocodiles, jackals, monkeys and deer. For the best experience of this top attractions in Sri Lanka, take a safari early morning when the animals are most active.',
+    description: 'Witness the majestic beauty of Sri Lanka’s wildlife at Udawalawe National Park. Famous for its large elephant herds, the park also hosts buffalo, deer, crocodiles, and vibrant birdlife. Enjoy a peaceful jeep safari through stunning landscapes surrounding Udawalawe Reservoir. A must-visit destination for those who love nature and wildlife photography.',
     distance: '500 k/m',
     maxGroupSize: 7,
     address: 'add location',
@@ -205,7 +212,7 @@ const featuredPostsData = [
     location: 'Polonnaruwa',
     price: '15',
     priceUnit: '/per tour',
-    description: 'This is one of the top Sri Lanka tourist spots which is also claimed to be one of the world heritage sites. The place gained its importance after the arrival of the Bodhi Tree which is also called the "tree of enlightenment". The place protects the tree and keeps it away from the wild elephants during the reign of King Kirthi Sri Rangasingha.',
+    description: 'Step back in time with a journey to Polonnaruwa, Sri Lanka’s second ancient capital and a UNESCO World Heritage Site. Explore well-preserved ruins of royal palaces, temples, Buddha statues, and sacred stupas. Learn about the island’s rich history and marvel at ancient architecture surrounded by lush greenery. A must-see for culture and history lovers.',
     distance: '500 k/m',
     maxGroupSize: 7,
     address: 'add location',
