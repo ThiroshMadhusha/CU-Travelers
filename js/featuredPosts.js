@@ -128,7 +128,7 @@ details: [
     details: [
       {
         title: 'Tour Plan',
-        points: ['Early morning safari', 'Spot wildlife', 'Picnic lunch', 'Evening return']
+        points: ['Early morning safari', 'Spot wildlife', 'Wildlife Photography']
       },
       {
         title: 'What we Can View',
