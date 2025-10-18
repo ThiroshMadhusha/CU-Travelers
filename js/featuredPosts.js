@@ -5,7 +5,7 @@ const featuredPostsData = [
     title: 'Airport Shuttle Services',
     location: 'Colombo',
     price: '120',
-    priceUnit: '/per pickup or drop',
+    priceUnit: '/pickup or drop',
     description: 'Smooth and reliable transfers from or to the airport with CU Tours Sri Lanka. Enjoy comfortable, air-conditioned vehicles and friendly drivers ensuring timely pickups and drop-offs. Whether arriving or departing, travel stress-free with door-to-door service to hotels or destinations across Sri Lanka. Perfect for solo travelers, families, or groups seeking comfort, safety, and punctuality every time.',
     distance: '400 k/m',
     maxGroupSize: 7,
@@ -118,12 +118,13 @@ details: [
     maxGroupSize: 7,
     address: 'add location',
     gallery: [
-      '/assets/gallery/yala1.jpg',
-      '/assets/gallery/yala2.jpg',
-      '/assets/gallery/yala3.jpg',
-      '/assets/gallery/yala4.jpg',
-      '/assets/gallery/yala5.jpg',
-      '/assets/gallery/yala6.jpg'
+      '/assets/featured/yala4.jpg',
+      '/assets/featured/yala1.jpg',
+      '/assets/featured/yala9.jpg',
+      '/assets/featured/yala2.jpg',
+      '/assets/featured/yala6.jpg',
+      '/assets/featured/yala7.jpg',
+      '/assets/featured/yala3.jpg'
     ],
     details: [
       {
@@ -151,17 +152,17 @@ details: [
     maxGroupSize: 7,
     address: 'add location',
     gallery: [
-      '/assets/gallery/udawalawe1.jpg',
-      '/assets/gallery/udawalawe2.jpg',
-      '/assets/gallery/udawalawe3.jpg',
-      '/assets/gallery/udawalawe4.jpg',
-      '/assets/gallery/udawalawe5.jpg',
-      '/assets/gallery/udawalawe6.jpg'
+      '/assets/featured/udawalawe1.jpg',
+      '/assets/featured/udawalawe2.jpg',
+      '/assets/featured/udawalawe3.jpg',
+      '/assets/featured/udawalawe4.jpg',
+      '/assets/featured/udawalawe5.jpg',
+      '/assets/featured/udawalawe6.jpg'
     ],
     details: [
       {
         title: 'Tour Plan',
-        points: ['Safari drive', 'Elephant orphanage visit', 'Bird watching', 'Return']
+        points: ['Safari drive', 'Elephant orphanage visit', 'Bird watching']
       },
       {
         title: 'What we Can View',
@@ -184,17 +185,16 @@ details: [
     maxGroupSize: 7,
     address: 'add location',
     gallery: [
-      '/assets/gallery/whales1.jpg',
-      '/assets/gallery/whales2.jpg',
-      '/assets/gallery/whales3.jpg',
-      '/assets/gallery/whales4.jpg',
-      '/assets/gallery/whales5.jpg',
-      '/assets/gallery/whales6.jpg'
+      '/assets/featured/whale1.jpg',
+      '/assets/featured/whale2.jpg',
+      '/assets/featured/whale3.jpg',
+      '/assets/featured/whale4.jpeg',
+      '/assets/featured/whale5.jpg',
     ],
     details: [
       {
         title: 'Tour Plan',
-        points: ['Boat departure', 'Whale spotting', 'Lunch on board', 'Return to shore']
+        points: ['Boat departure', 'Whale spotting', 'Lunch on board']
       },
       {
         title: 'What we Can View',
